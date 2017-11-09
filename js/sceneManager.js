@@ -301,10 +301,12 @@ function initPhone()
 
                         phone.children[0].material.find(x => x.name == 'lens').map = this.phoneLensTex;
                         phone.children[0].material.find(x => x.name == 'lens').color = new THREE.Color(100,100,100);
+                        phone.children[0].material.find(x => x.name == 'front').color = new THREE.Color(0,0,0);
                         phone.children[0].material.find(x => x.name == 'screen').map = renderTarget.texture;
                         phone.children[0].material.find(x => x.name == 'screen').emissiveMap = renderTarget.texture;
                         phone.children[0].material.find(x => x.name == 'screen').emissive = new THREE.Color(0xffffff );
                         phone.children[0].material.find(x => x.name == 'flash').map = this.phoneFlashTex;
+
 
                         resolve();
                     },
