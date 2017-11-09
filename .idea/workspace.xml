@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="040f219d-64cd-47a1-8d4c-555a3c55fe8c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/sceneManager.js" afterPath="$PROJECT_DIR$/js/sceneManager.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/storyBoard.js" afterPath="$PROJECT_DIR$/js/storyBoard.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -55,8 +53,8 @@
       <file leaf-file-name="storyBoard.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/storyBoard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="46" lean-forward="false" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
+            <state relative-caret-position="289">
+              <caret line="17" column="26" lean-forward="false" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -348,12 +346,12 @@
       <updated>1510112705526</updated>
       <workItem from="1510112707003" duration="210000" />
       <workItem from="1510149093595" duration="25776000" />
-      <workItem from="1510210743149" duration="31182000" />
+      <workItem from="1510210743149" duration="31340000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57168000" />
+    <option name="totallyTimeSpent" value="57326000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -578,8 +576,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/storyBoard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="46" lean-forward="false" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
+        <state relative-caret-position="289">
+          <caret line="17" column="26" lean-forward="false" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
           <folding />
         </state>
       </provider>

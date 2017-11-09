@@ -14,6 +14,12 @@ function playSequence()
             }).delay(1000)
             .start();
 
+        var tweenPhoneCamera = new TWEEN.Tween(phoneCamera.position)
+            .to({z : 27},5000)
+            .easing(TWEEN.Easing.Cubic.InOut)
+            .delay(3000)
+            .start();
+
         var phoneColor = {r:0,g:0,b:0};
         var tweenPhoneColor = new TWEEN.Tween(phoneColor)
             .to({r:60/255,g:60/255,b:60/255},6000)
