@@ -5,20 +5,54 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <title>Skyline</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <!--<script src="bower_components/jquery/src/jquery.js"></script>-->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/three.js/three.js"></script>
     <script src="bower_components/tween.js/src/Tween.js"></script>
     <script src="bower_components/bluebird/js/browser/bluebird.js"></script>
+    <script src="js/libs/spin.min.js"></script>
 </head>
 <body>
-
+<div id="container"></div>
+<div id="spinner" style="position: fixed; width: 100%; height: 100%; left: 0; top: 0; background: rgba(0, 0, 0, 1); z-index: 10;">
+    <p style="position: absolute; width: 100%; top: 70%; color: white; text-align: center;">
+Loading Stuff...
+    </p>
+</div>
 </body>
 <script src="js/controls/OrbitControls.js"></script>
 <script src="js/Detector.js"></script>
 <script src="js/libs/dat.gui.min.js"></script>
+<script src="js/libs/stats.min.js"></script>
 <script src="js/objects/Sky.js"></script>
-
+<script src="js/loaders/OBJLoader.js"></script>
 <script src="js/sceneManager.js"></script>
 <script src="js/mapboxImageProcessor.js"></script>
 <script src="js/terrainTile.js"></script>
+
+<script>
+    var opts = {
+        lines: 11 // The number of lines to draw
+        , length: 56 // The length of each line
+        , width: 2 // The line thickness
+        , radius: 55 // The radius of the inner circle
+        , scale: 1 // Scales overall size of the spinner
+        , corners: 1 // Corner roundness (0..1)
+        , color: '#ffffff' // #rgb or #rrggbb or array of colors
+        , opacity: 0.25 // Opacity of the lines
+        , rotate: 0 // The rotation offset
+        , direction: 1 // 1: clockwise, -1: counterclockwise
+        , speed: 1 // Rounds per second
+        , trail: 95 // Afterglow percentage
+        , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+        , zIndex: 2e9 // The z-index (defaults to 2000000000)
+        , className: 'spinner' // The CSS class to assign to the spinner
+        , top: '50%' // Top position relative to parent
+        , left: '50%' // Left position relative to parent
+        , shadow: false // Whether to render a shadow
+        , hwaccel: false // Whether to use hardware acceleration
+        , position: 'absolute' // Element positioning
+    }
+    var target = document.getElementById('spinner')
+    var spinner = new Spinner(opts).spin(target);
+</script>
 </html>

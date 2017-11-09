@@ -2,7 +2,7 @@
 function TerrainTile()
 {}
 
-TerrainTile.prototype.loadzxy = function (z,x,y,scene)
+TerrainTile.prototype.loadzxy = function (z,x,y,parent)
 {
     return new Promise((resolve, reject) =>
     {
@@ -91,7 +91,7 @@ TerrainTile.prototype.loadzxy = function (z,x,y,scene)
         }).then( () =>
         {
             this.terrainPlane = new THREE.Mesh( this.terrainGeometry, this.terrainMaterial );
-            scene.add(this.terrainPlane);
+            parent.add(this.terrainPlane);
             this.terrainPlane.position.copy(getWorldPosFromZXY(z,x,y));
             console.log("TerrainTile.prototype.loadzxy done");
             resolve();
