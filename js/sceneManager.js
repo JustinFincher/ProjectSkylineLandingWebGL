@@ -34,6 +34,14 @@ function onWindowResize() {
 
 var terrainSize = 10;
 
+var locationsToGo =
+    [
+        {lon:10.7927,lat:47.4467,zoom:10},
+        {lon:131.0366,lat:-25.3454,zoom:10},
+        {lon:114.1802,lat:22.2572,zoom:10},
+        {lon:-7.7748,lat:31.1323,zoom:10}
+    ]
+
 var terrainScene = new THREE.Scene();
 var phoneScene = new THREE.Scene();
 var phoneCamera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 0.1, 2000000 );
@@ -92,7 +100,9 @@ window.onload = function()
     phoneCamera.position.z = 5;
     phoneCamera.position.y = 3.6;
 
-    flyToCoordinate( 10.7927,47.4467,10,1).then(function ()
+   var loc = locationsToGo[Math.floor(Math.random() * locationsToGo.length)];
+   console.log(loc);
+    flyToCoordinate( loc.lon,loc.lat,loc.zoom,1).then(function ()
     {
         return initPhone();
     }).then(function ()
