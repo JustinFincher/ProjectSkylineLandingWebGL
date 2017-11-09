@@ -26,8 +26,8 @@ container.appendChild( stats.dom );
 
 function onWindowResize() {
     phoneCamera.aspect = window.innerWidth / window.innerHeight;
-    camera.aspect = 1.0/2.0;
-    camera.updateProjectionMatrix();
+    terrainCamera.aspect = 1.0/2.0;
+    terrainCamera.updateProjectionMatrix();
     phoneCamera.updateProjectionMatrix();
     renderer.setSize( window.innerWidth, window.innerHeight );
 }
@@ -37,18 +37,18 @@ var terrainSize = 10;
 var terrainScene = new THREE.Scene();
 var phoneScene = new THREE.Scene();
 var phoneCamera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 0.1, 2000000 );
-var camera = new THREE.PerspectiveCamera( 30,1.0/2.0, 0.1, 2000000 );
+var terrainCamera = new THREE.PerspectiveCamera( 30,1.0/2.0, 0.1, 2000000 );
 var renderer = new THREE.WebGLRenderer();
 var containerForTerrains = new THREE.Object3D();
 var containerPivot;
 var sky,sunSphere,sunLight;
 
 var sunEffectValue = {
-    turbidity: 12.7,
-    rayleigh: 2.9,
-    mieCoefficient: 0.005,
+    turbidity: 10,
+    rayleigh: 2.6,
+    mieCoefficient: 0.003,
     mieDirectionalG: 0.8,
-    luminance: 1,
+    luminance: 1.1,
     inclination: 0.50743, // elevation / inclination
     azimuth: 0.25, // Facing front,
     sun: true
@@ -70,15 +70,14 @@ var renderTarget = new THREE.WebGLRenderTarget( 1024, 2048, { format: THREE.RGBF
 function engineUpdate(time)
 {
     requestAnimationFrame( engineUpdate );
-    TWEEN.update(time);
     stats.update();
 
-    renderTarget.renderer
-
-    renderer.render( terrainScene, camera, renderTarget ,true);
+    renderer.render( terrainScene, terrainCamera, renderTarget ,true);
     renderer.render( phoneScene, phoneCamera );
 
     // renderer.render( terrainScene, camera );
+
+    TWEEN.update(time);
 }
 
 window.onload = function()
@@ -87,9 +86,11 @@ window.onload = function()
     window.addEventListener( 'resize', onWindowResize, false );
     document.body.appendChild(renderer.domElement);
 
-    camera.position.copy(new THREE.Vector3( 0.17838071529878918, 2.4545115500186183, 16.66033589450067));
-    phoneCamera.position.z = 30;
-    phoneCamera.position.y = 5
+    terrainCamera.position.copy(new THREE.Vector3(0, 12,20));
+    terrainCamera.lookAt(new THREE.Vector3(0,0,0));
+
+    phoneCamera.position.z = 5;
+    phoneCamera.position.y = 3.6;
 
     flyToCoordinate( 10.7927,47.4467,10,1).then(function ()
     {
@@ -164,7 +165,7 @@ function initENV()
             terrainScene.add( sky );
             // Add Sun Helper
             sunSphere = new THREE.Mesh(
-                new THREE.SphereBufferGeometry( 20, 16, 8 ),
+                new THREE.SphereBufferGeometry( 200, 16, 8 ),
                 new THREE.MeshBasicMaterial( { color: 0xffffff } )
             );
             sunSphere.position.y = - 700000;
@@ -178,10 +179,12 @@ function initENV()
 
             initSun();
 
-            controls = new THREE.OrbitControls( camera, renderer.domElement );
+            controls = new THREE.OrbitControls( terrainCamera, renderer.domElement );
             controls.addEventListener( 'change', renderer );
-            controls.enableZoom = true;
+            controls.enableZoom = false;
             controls.enablePan = true;
+            controls.enableRotate = true;
+            controls.enabled = false;
 
             resolve();
         }
