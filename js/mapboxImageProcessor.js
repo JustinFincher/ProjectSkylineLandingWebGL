@@ -26,6 +26,19 @@ function asyncHeightImage(z,x,y)
         img.src = imageURL;
     });
 }
+function imageToCanvasContext(img)
+{
+    return new Promise(function (resolve, reject)
+    {
+        var canvas = document.createElement("canvas");
+        canvas.width =img.width;
+        canvas.height =img.height;
+        var context = canvas.getContext("2d");
+        context.drawImage(img, 0, 0);
+        resolve(context);
+    });
+}
+
 function imageToHeightData(img)
 {
     return new Promise(function (resolve, reject)

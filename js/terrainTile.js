@@ -6,36 +6,37 @@ TerrainTile.prototype.loadzxy = function (z,x,y,scene)
 {
     asyncHeightImage(z,x,y).then((image) =>
     {
-        var size = image.width;
-        console.log('asyncHeightImage Size = ' + size);
+        this.size = image.width;
+        console.log('asyncHeightImage Size = ' + this.size);
         console.log('this.terrainSize = ' + terrainSize);
-        this.terrainGeometry = new THREE.PlaneGeometry( terrainSize, terrainSize, size-1,size-1 );
-        return imageToHeightData(image);
-    }).then((heightData) =>
+        this.terrainGeometry = new THREE.PlaneGeometry( terrainSize, terrainSize, this.size-1,this.size-1 );
+        // return imageToHeightData(image);
+        return imageToCanvasContext(image);
+    }).then((canvasContext) =>
     {
-        var data = new Array(heightData.length / 4);
+
+        var imgd = canvasContext.getImageData(0, 0, this.size,this.size);
+        var heightData = imgd.data;
 
         console.log('heightData length / 4 = ' + heightData.length / 4);
         console.log('terrainGeometry vertices length = ' + this.terrainGeometry.vertices.length);
-
-
         for (var i = 0, n = heightData.length / 4; i < n; i += 1)
         {
             var height = -10000 + ((heightData[i * 4] * 256 * 256 + heightData[i * 4 +1] * 256 + heightData[i * 4 + 2]) * 0.1) + 1;
-            if (height > this.maxHeight)
-            {
-                this.maxHeight = height;
-            }
-        }
-        console.log(this.maxHeight);
-        for (var i = 0, n = heightData.length / 4; i < n; i += 1)
-        {
-            var height = -10000 + ((heightData[i * 4] * 256 * 256 + heightData[i * 4 +1] * 256 + heightData[i * 4 + 2]) * 0.1) + 1;
-            height = height / this.maxHeight;
+            height = height / 2000;
+            this.terrainGeometry.vertices[i] = new THREE.Vector3( this.terrainGeometry.vertices[i].x, this.terrainGeometry.vertices[i].y,terrainSize * height / 15);
+
             // console.log(height);
-            this.terrainGeometry.vertices[i] = new THREE.Vector3( this.terrainGeometry.vertices[i].x, this.terrainGeometry.vertices[i].y,terrainSize * height * 10);
+            heightData[i * 4] = height * 256;
+            heightData[i * 4+1] = height * 256;
+            heightData[i * 4+2] = height * 256;
         }
         this.terrainGeometry.verticesNeedUpdate = true;
+
+        canvasContext.putImageData(imgd, 0,0);
+        var jpegUrl = canvasContext.canvas.toDataURL("image/jpeg");
+        this.bumpMapURL = jpegUrl;
+
         return asyncColorMap(z,x,y);
 
     }).then((url) =>
@@ -46,13 +47,31 @@ TerrainTile.prototype.loadzxy = function (z,x,y,scene)
                 url,
                 ( texture )=>
                 {
-                    console.log(texture);
-                    console.log(this);
-                    this.terrainMaterial = new THREE.MeshBasicMaterial(
+                    this.colorMap = texture;
+                    new THREE.TextureLoader().load(
+                        this.bumpMapURL,
+                        ( texture )=>
                         {
-                            map: texture
-                        } );
-                    resolve();
+                            this.bumpMap = texture;
+                            // console.log()
+                            this.terrainMaterial = new THREE.MeshPhongMaterial(
+                                {
+                                    map: this.colorMap,
+                                    bumpMap: this.bumpMap
+                                }
+                            );
+                            resolve();
+                        },
+                        ( xhr ) =>
+                        {
+                            console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+                        },
+                        ( xhr )=>
+                        {
+                            console.error( 'An error happened' );
+                            reject();
+                        }
+                    );
                 },
                 ( xhr ) =>
                 {

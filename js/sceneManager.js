@@ -22,7 +22,7 @@ function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize( window.innerWidth, window.innerHeight );
-    render();
+    renderer.render( scene, camera );
 }
 
 var terrainSize = 10;
@@ -32,7 +32,7 @@ var camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHe
 var renderer = new THREE.WebGLRenderer();
 var containerForTerrains = new THREE.Object3D();
 var containerPivot;
-var sky,sunSphere;
+var sky,sunSphere,sunLight;
 var controls;
 
 function engineUpdate()
@@ -52,10 +52,10 @@ window.onload = function()
 
     engineUpdate();
 
+
+
+    flyToCoordinate( 10.7927,47.4467,9,1);
     initSky();
-
-
-    flyToCoordinate( 10.7927,47.4467,9,2);
 }
 
 function flyToCoordinate(lon,lat,zoom,boundSize)
@@ -85,28 +85,37 @@ function flyToZXY(z,x,y,boundSize)
 }
 
 function initSky() {
+    // var ambientLight = new THREE.AmbientLight( 0x101010 ); // soft white light
+    // scene.add( ambientLight );
+
     // Add Sky
     sky = new THREE.Sky();
     sky.scale.setScalar( 450000 );
     scene.add( sky );
     // Add Sun Helper
     sunSphere = new THREE.Mesh(
-        new THREE.SphereBufferGeometry( 20000, 16, 8 ),
+        new THREE.SphereBufferGeometry( 20, 16, 8 ),
         new THREE.MeshBasicMaterial( { color: 0xffffff } )
     );
     sunSphere.position.y = - 700000;
-    sunSphere.visible = false;
+    sunSphere.visible = true;
     scene.add( sunSphere );
+
+
+    sunLight = new THREE.DirectionalLight( 0xffffff, 1.2 );
+    sunSphere.add( sunLight );
+    sunLight.target = containerPivot;
+
     /// GUI
     var effectController  = {
-        turbidity: 10,
-        rayleigh: 2,
+        turbidity: 12.7,
+        rayleigh: 2.9,
         mieCoefficient: 0.005,
         mieDirectionalG: 0.8,
         luminance: 1,
         inclination: 0.49, // elevation / inclination
         azimuth: 0.25, // Facing front,
-        sun: ! true
+        sun: true
     };
     var distance = 400000;
     function guiChanged() {
