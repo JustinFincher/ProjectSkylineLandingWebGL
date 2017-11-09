@@ -28,7 +28,7 @@ function onWindowResize() {
 var terrainSize = 10;
 
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 2000000 );
+var camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 0.1, 2000000 );
 var renderer = new THREE.WebGLRenderer();
 var containerForTerrains = new THREE.Object3D();
 var containerPivot;
@@ -50,11 +50,12 @@ window.onload = function()
 
     camera.position.z = 20;
 
+    // scene.background = new THREE.Color( 0x101010 );
+    // scene.fog = new THREE.FogExp2( 0x101010, 0.25 );
+
     engineUpdate();
 
-
-
-    flyToCoordinate( 10.7927,47.4467,9,1);
+    flyToCoordinate( 10.7927,47.4467,10,1);
     initSky();
 }
 
@@ -149,8 +150,8 @@ function initSky() {
     controls.addEventListener( 'change', renderer );
     //controls.maxPolarAngle = Math.PI / 2;
     controls.enableZoom = false;
-    controls.enablePan = false;
+    controls.enablePan = true;
 
-    var helper = new THREE.GridHelper( 100, 10, 0xffffff, 0xffffff );
-    scene.add( helper );
+    // var helper = new THREE.GridHelper( 100, 10, 0xffffff, 0xffffff );
+    // scene.add( helper );
 }

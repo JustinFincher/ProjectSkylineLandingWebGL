@@ -24,7 +24,7 @@ TerrainTile.prototype.loadzxy = function (z,x,y,scene)
         {
             var height = -10000 + ((heightData[i * 4] * 256 * 256 + heightData[i * 4 +1] * 256 + heightData[i * 4 + 2]) * 0.1) + 1;
             height = height / 2000;
-            this.terrainGeometry.vertices[i] = new THREE.Vector3( this.terrainGeometry.vertices[i].x, this.terrainGeometry.vertices[i].y,terrainSize * height / 15);
+            this.terrainGeometry.vertices[i] = new THREE.Vector3( this.terrainGeometry.vertices[i].x, this.terrainGeometry.vertices[i].y,terrainSize * height / 12);
 
             // console.log(height);
             heightData[i * 4] = height * 256;
@@ -57,7 +57,9 @@ TerrainTile.prototype.loadzxy = function (z,x,y,scene)
                             this.terrainMaterial = new THREE.MeshPhongMaterial(
                                 {
                                     map: this.colorMap,
-                                    bumpMap: this.bumpMap
+                                    bumpMap: this.bumpMap,
+                                    reflectivity:0.2,
+                                    shininess:5
                                 }
                             );
                             resolve();
