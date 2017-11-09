@@ -18,11 +18,22 @@ TerrainTile.prototype.loadzxy = function (z,x,y,scene)
         console.log('heightData length / 4 = ' + heightData.length / 4);
         console.log('terrainGeometry vertices length = ' + this.terrainGeometry.vertices.length);
 
+
         for (var i = 0, n = heightData.length / 4; i < n; i += 1)
         {
             var height = -10000 + ((heightData[i * 4] * 256 * 256 + heightData[i * 4 +1] * 256 + heightData[i * 4 + 2]) * 0.1) + 1;
-            height = height / 600;
-            this.terrainGeometry.vertices[i] = new THREE.Vector3( this.terrainGeometry.vertices[i].x, this.terrainGeometry.vertices[i].y,height / 4);
+            if (height > this.maxHeight)
+            {
+                this.maxHeight = height;
+            }
+        }
+        console.log(this.maxHeight);
+        for (var i = 0, n = heightData.length / 4; i < n; i += 1)
+        {
+            var height = -10000 + ((heightData[i * 4] * 256 * 256 + heightData[i * 4 +1] * 256 + heightData[i * 4 + 2]) * 0.1) + 1;
+            height = height / this.maxHeight;
+            // console.log(height);
+            this.terrainGeometry.vertices[i] = new THREE.Vector3( this.terrainGeometry.vertices[i].x, this.terrainGeometry.vertices[i].y,terrainSize * height * 10);
         }
         this.terrainGeometry.verticesNeedUpdate = true;
         return asyncColorMap(z,x,y);
