@@ -25,15 +25,19 @@ stats = new Stats();
 container.appendChild( stats.dom );
 
 function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
+    phoneCamera.aspect = window.innerWidth / window.innerHeight;
+    camera.aspect = 1.0/2.0;
     camera.updateProjectionMatrix();
+    phoneCamera.updateProjectionMatrix();
     renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
-var terrainSize = 30;
+var terrainSize = 10;
 
 var terrainScene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 0.1, 2000000 );
+var phoneScene = new THREE.Scene();
+var phoneCamera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 0.1, 2000000 );
+var camera = new THREE.PerspectiveCamera( 30,1.0/2.0, 0.1, 2000000 );
 var renderer = new THREE.WebGLRenderer();
 var containerForTerrains = new THREE.Object3D();
 var containerPivot;
@@ -45,7 +49,7 @@ var sunEffectValue = {
     mieCoefficient: 0.005,
     mieDirectionalG: 0.8,
     luminance: 1,
-    inclination: 0.49, // elevation / inclination
+    inclination: 0.50743, // elevation / inclination
     azimuth: 0.25, // Facing front,
     sun: true
 };
@@ -60,13 +64,21 @@ var sunEffectParameter = new Proxy(sunEffectValue, {
 });
 var controls;
 var phone;
+var renderTarget = new THREE.WebGLRenderTarget( 1024, 2048, { format: THREE.RGBFormat, minFilter: THREE.LinearFilter, magFilter: THREE.NearestFilter} );
 
 
-function engineUpdate()
+function engineUpdate(time)
 {
     requestAnimationFrame( engineUpdate );
+    TWEEN.update(time);
     stats.update();
-    renderer.render( terrainScene, camera );
+
+    renderTarget.renderer
+
+    renderer.render( terrainScene, camera, renderTarget ,true);
+    renderer.render( phoneScene, phoneCamera );
+
+    // renderer.render( terrainScene, camera );
 }
 
 window.onload = function()
@@ -75,18 +87,21 @@ window.onload = function()
     window.addEventListener( 'resize', onWindowResize, false );
     document.body.appendChild(renderer.domElement);
 
-    camera.position.z = 100;
+    camera.position.copy(new THREE.Vector3( 0.17838071529878918, 2.4545115500186183, 16.66033589450067));
+    phoneCamera.position.z = 30;
+    phoneCamera.position.y = 5
 
     flyToCoordinate( 10.7927,47.4467,10,1).then(function ()
-    {
-        return initENV();
-    }).then(function ()
     {
         return initPhone();
     }).then(function ()
     {
+        return initENV();
+    }).then(function ()
+    {
         engineUpdate();
         $( "#spinner" ).fadeOut();
+        playSequence();
     });
 }
 
@@ -137,6 +152,13 @@ function initENV()
 {
     return new Promise( (resolve, reject) =>
         {
+            var ambientLight = new THREE.AmbientLight( 0x404040 ); // soft white light
+            phoneScene.add( ambientLight );
+            var phoneStudioLight = new THREE.DirectionalLight( 0xffffff, 0.8 );
+            phoneScene.add( phoneStudioLight );
+            phoneStudioLight.position.copy(new THREE.Vector3(5,10,7.5));
+            phoneStudioLight.target = phone;
+
             sky = new THREE.Sky();
             sky.scale.setScalar( 450000 );
             terrainScene.add( sky );
@@ -158,7 +180,6 @@ function initENV()
 
             controls = new THREE.OrbitControls( camera, renderer.domElement );
             controls.addEventListener( 'change', renderer );
-            //controls.maxPolarAngle = Math.PI / 2;
             controls.enableZoom = true;
             controls.enablePan = true;
 
@@ -187,42 +208,118 @@ function initSun()
 
 function initPhone()
 {
-    return new Promise((resolve, reject) =>
+    return new Promise((gResolve, reject) =>
     {
-        var loader = new THREE.OBJLoader();
-
-        loader.load(
-            'obj/s7/s7.obj',
-            function ( object )
+        new Promise((resolve,reject) =>
+        {
+            var imageLoader = new THREE.TextureLoader();
+            imageLoader.load(
+                'obj/galaxy-s8/tex/flashthing.png',
+                ( texture ) =>
+                {
+                    this.phoneFlashTex = texture;
+                    console.log('flashTex');
+                    resolve();
+                },
+                // Function called when download progresses
+                function ( xhr ) {
+                    console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+                },
+                // Function called when download errors
+                function ( xhr ) {
+                    reject();
+                }
+            );
+        }).then(function ()
+        {
+            return new Promise((resolve,reject) =>
+                {
+                    var imageLoader = new THREE.TextureLoader();
+                    imageLoader.load(
+                        'obj/galaxy-s8/tex/12_camera_lens_icons.jpg',
+                        ( texture ) =>
+                        {
+                            this.phoneLensTex = texture;
+                            console.log('lensTex');
+                            resolve();
+                        },
+                        // Function called when download progresses
+                        function ( xhr ) {
+                            console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+                        },
+                        // Function called when download errors
+                        function ( xhr ) {
+                            reject();
+                        }
+                    );
+                }
+            )})
+        //     .then(function ()
+        //     {
+        //         return new Promise((resolve,reject) =>
+        //         {
+        //             var imageLoader = new THREE.TextureLoader();
+        //             imageLoader.load(
+        //                 'obj/galaxy-s8/tex/Galaxy-S8-wallpaper-2.jpg',
+        //                 ( texture ) =>
+        //                 {
+        //                     this.phoneScreenTex = texture;
+        //                     console.log('screenTex');
+        //                     resolve();
+        //                 },
+        //                 // Function called when download progresses
+        //                 function ( xhr ) {
+        //                     console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+        //                 },
+        //                 // Function called when download errors
+        //                 function ( xhr ) {
+        //                     reject();
+        //                 }
+        //             );
+        //         })
+        //     }
+        // )
+            .then(function ()
+        {
+            return new Promise((resolve,reject) =>
             {
-                phone = object;
-                terrainScene.add( object );
-                phone.rotation.x = Math.PI/2;
+                var loader = new THREE.OBJLoader();
 
-                //必要的材质 -。- C4D => THREE
-                //三星 Logo
-                phone.children.find(x => x.name == 'sideAndBack').material.find(x => x.name == 'default').color = new THREE.Color("rgb(181, 181, 181)");
-                phone.children.find(x => x.name == 'frontAndScreen').material.find(x => x.name == 'fundo').color = new THREE.Color("rgb(0, 0, 0)");
-                phone.children.find(x => x.name == 'frontAndScreen').material.find(x => x.name == 'Borda').color = new THREE.Color("rgb(200, 200, 200)");
-                phone.children.find(x => x.name == 'frontAndScreen').material.find(x => x.name == 'preto').color = new THREE.Color("rgb(255, 255, 255)");
-                phone.children.find(x => x.name == 'frontAndScreen').material.find(x => x.name == 'screenMat').color = new THREE.Color("rgb(0, 0, 0)");
-                phone.children.find(x => x.name == 'frontAndScreen').material.find(x => x.name == 'default').color = new THREE.Color("rgb(100, 100, 100)");
-                phone.children.find(x => x.name == 'sensor').material.color = new THREE.Color("rgb(100, 100, 100)");
+                loader.load(
+                    'obj/galaxy-s8/s8.obj',
+                    function ( object )
+                    {
+                        phone = object;
+                        console.log('phone');
+                        phoneScene.add( phone );
 
+                        //必要的材质 -。- C4D => THREE
+                        //三星 Logo
 
+                        phone.children[0].material.find(x => x.name == 'lens').map = this.phoneLensTex;
+                        phone.children[0].material.find(x => x.name == 'lens').color = new THREE.Color(100,100,100);
+                        phone.children[0].material.find(x => x.name == 'screen').map = renderTarget.texture;
+                        phone.children[0].material.find(x => x.name == 'screen').emissiveMap = renderTarget.texture;
+                        phone.children[0].material.find(x => x.name == 'screen').emissive = new THREE.Color(0xffffff );
+                        phone.children[0].material.find(x => x.name == 'flash').map = this.phoneFlashTex;
 
-                resolve(object);
-            },
-            // called when loading is in progresses
-            function ( xhr ) {
-                console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-            },
-            // called when loading has errors
-            function ( error ) {
-                console.log( 'An error happened' );
-                reject();
-            }
-        );
+                        resolve();
+                    },
+                    // called when loading is in progresses
+                    function ( xhr ) {
+                        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+                    },
+                    // called when loading has errors
+                    function ( error ) {
+                        console.log( 'An error happened' );
+                        reject();
+                    }
+                );
+            });
+        }).then(function ()
+        {
+            gResolve();
+        });
     });
 
 }
