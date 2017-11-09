@@ -22,7 +22,7 @@ function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize( window.innerWidth, window.innerHeight );
-    renderer.render( scene, camera );
+    // renderer.render( scene, camera );
 }
 
 var terrainSize = 10;
@@ -38,7 +38,6 @@ var controls;
 function engineUpdate()
 {
     requestAnimationFrame( engineUpdate );
-
     renderer.render( scene, camera );
 }
 
@@ -50,14 +49,34 @@ window.onload = function()
 
     camera.position.z = 20;
 
-    // scene.background = new THREE.Color( 0x101010 );
-    // scene.fog = new THREE.FogExp2( 0x101010, 0.25 );
+    // renderer.setClearColor(0x000000,1);
+    // renderer.clear();
+
+    // var worker = new Worker('terrainWorker.js');
+    // worker.addEventListener('message', function(e)
+    // {
+    //     engineUpdate();
+    // }, false);
+    // worker.postMessage({'scene':scene,
+    //     'containerForTerrains':containerForTerrains,
+    //     'containerPivot':containerPivot,
+    //     'camera':camera,
+    //     'renderer':renderer,
+    //     'sky':sky,
+    //     'sunSphere':sunSphere,
+    //     'sunLight':sunLight,
+    //     'controls':controls
+    // }); // Start the worker.
+
 
     engineUpdate();
 
-    flyToCoordinate( 10.7927,47.4467,10,1);
-    initSky();
+    flyToCoordinate( 10.7927,47.4467,10,1).then(function () {
+        initSky();
+    });
 }
+
+
 
 function flyToCoordinate(lon,lat,zoom,boundSize)
 {
@@ -67,21 +86,37 @@ function flyToCoordinate(lon,lat,zoom,boundSize)
 }
 function flyToZXY(z,x,y,boundSize)
 {
-    return new Promise(function (resolve, reject)
+    return new Promise( (resolve, reject) =>
     {
-        // scene.remove(containerForTerrains);
-        // scene.add(containerForTerrains);
         containerForTerrains.position.copy(new THREE.Vector3(-x * terrainSize, y * terrainSize, 0));
+
+        var loadingGridArray = [];
+
         for (var i = x - boundSize; i <= x + boundSize; i++) {
-            for (var k = y - boundSize; k <= y + boundSize; k++) {
-                new TerrainTile().loadzxy(z, i, k, containerForTerrains);
+            for (var k = y - boundSize; k <= y + boundSize; k++)
+            {
+                console.log(i,k);
+                console.log(i - x + boundSize, k - y + boundSize);
+                loadingGridArray[(i - x + boundSize) * (1+ boundSize * 2) + (k - y + boundSize)] = {'x':i,'y':k};
             }
         }
-        containerPivot = new THREE.Object3D();
-        containerPivot.position=new THREE.Vector3(0,0,0);
-        containerPivot.add(containerForTerrains);
-        scene.add(containerPivot);
-        containerPivot.rotation.x = - Math.PI / 2
+        console.log(loadingGridArray);
+        Promise.each(loadingGridArray, (vec) =>
+        {
+            var t = new TerrainTile();
+            return t.loadzxy(z, vec.x, vec.y, containerForTerrains);
+        }).then( () =>
+        {
+            console.log("Loading Terrain Grid Done");
+            containerPivot = new THREE.Object3D();
+            containerPivot.position=new THREE.Vector3(0,0,0);
+            containerPivot.add(containerForTerrains);
+            scene.add(containerPivot);
+            containerPivot.rotation.x = - Math.PI / 2;
+
+            // self.postMessage();
+            resolve();
+        });
     });
 }
 
@@ -133,7 +168,7 @@ function initSky() {
         sunSphere.position.z = distance * Math.sin( phi ) * Math.cos( theta );
         sunSphere.visible = effectController.sun;
         uniforms.sunPosition.value.copy( sunSphere.position );
-        renderer.render( scene, camera );
+        // renderer.render( scene, camera );
     }
     var gui = new dat.GUI();
     gui.add( effectController, "turbidity", 1.0, 20.0, 0.1 ).onChange( guiChanged );
@@ -149,7 +184,7 @@ function initSky() {
     controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.addEventListener( 'change', renderer );
     //controls.maxPolarAngle = Math.PI / 2;
-    controls.enableZoom = false;
+    controls.enableZoom = true;
     controls.enablePan = true;
 
     // var helper = new THREE.GridHelper( 100, 10, 0xffffff, 0xffffff );
