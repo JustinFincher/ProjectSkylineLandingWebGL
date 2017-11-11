@@ -42,6 +42,7 @@ TerrainTile.prototype.loadzxy = function (z,x,y,parent)
             var jpegUrl = canvasContext.canvas.toDataURL("image/jpeg");
             this.bumpMapURL = jpegUrl;
 
+            image = null;
             return asyncColorMap(z,x,y);
 
         }).then((url) =>

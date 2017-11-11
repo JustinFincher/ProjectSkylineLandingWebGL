@@ -49,7 +49,7 @@ var locationsToGo =
 var terrainScene = new THREE.Scene();
 var phoneScene = new THREE.Scene();
 var phoneCamera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 0.1, 2000000 );
-var terrainCamera = new THREE.PerspectiveCamera( 30,1.0/2.0, 0.1, 2000000 );
+var terrainCamera = new THREE.PerspectiveCamera( 25,1.0/2.0, 0.1, 2000000 );
 var renderer = new THREE.WebGLRenderer();
 var containerForTerrains = new THREE.Object3D();
 var containerPivot;
@@ -133,8 +133,9 @@ window.onload = function()
     window.addEventListener( 'resize', onWindowResize, false );
     document.body.appendChild(renderer.domElement);
 
-    terrainCamera.position.copy(new THREE.Vector3(0, 10 ,50));
-    terrainCamera.lookAt(new THREE.Vector3(0,12,0));
+
+    terrainCamera.position.copy(new THREE.Vector3(0,15 ,25));
+    terrainCamera.lookAt(new THREE.Vector3(0,-2.5,0));
 
     phoneCamera.position.z = 5;
     phoneCamera.position.y = 3.6;

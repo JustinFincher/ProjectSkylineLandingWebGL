@@ -63,13 +63,7 @@ function imageToHeightData(img)
 }
 function asyncHeightMap(z,x,y)
 {
-    if (bowser.osname == 'ios' || bowser.osname =='android')
-    {
-        var imageURL = `https://api.mapbox.com/v4/mapbox.terrain-rgb/${z}/${x}/${y}.pngraw?access_token=${apiKey}`;
-    }else
-    {
-        var imageURL = `https://api.mapbox.com/v4/mapbox.terrain-rgb/${z}/${x}/${y}.pngraw?access_token=${apiKey}`;
-    }
+    var imageURL = `https://api.mapbox.com/v4/mapbox.terrain-rgb/${z}/${x}/${y}.pngraw?access_token=${apiKey}`;
     return new Promise(function (resolve, reject)
     {
         var img = new Image();
