@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="040f219d-64cd-47a1-8d4c-555a3c55fe8c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/sceneManager.js" afterPath="$PROJECT_DIR$/js/sceneManager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/terrainTile.js" afterPath="$PROJECT_DIR$/js/terrainTile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/storyBoard.js" afterPath="$PROJECT_DIR$/js/storyBoard.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -52,8 +51,18 @@
       <file leaf-file-name="sceneManager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/sceneManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="308" column="109" lean-forward="false" selection-start-line="308" selection-start-column="109" selection-end-line="308" selection-end-column="109" />
+            <state relative-caret-position="476">
+              <caret line="82" column="62" lean-forward="false" selection-start-line="82" selection-start-column="50" selection-end-line="82" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="storyBoard.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/storyBoard.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="30" lean-forward="true" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -92,9 +101,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>terrainscen</find>
-      <find>render</find>
-      <find>cameracamera</find>
       <find>onWindowResize</find>
       <find>control</find>
       <find>camera</find>
@@ -122,6 +128,9 @@
       <find>container</find>
       <find>appendChild</find>
       <find>download</find>
+      <find>initENV</find>
+      <find>p</find>
+      <find>sunEffectParameter</find>
     </findStrings>
     <replaceStrings>
       <replace>terminal</replace>
@@ -139,7 +148,6 @@
         <option value="$PROJECT_DIR$/js/scene.js" />
         <option value="$PROJECT_DIR$/js/objects/Sky.js" />
         <option value="$PROJECT_DIR$/js/terrainWorker.js" />
-        <option value="$PROJECT_DIR$/js/storyBoard.js" />
         <option value="$PROJECT_DIR$/js/mapboxImageProcessor.js" />
         <option value="$PROJECT_DIR$/node_modules/bulma/sass/utilities/initial-variables.sass" />
         <option value="$PROJECT_DIR$/css/semantic/src/theme.config" />
@@ -149,6 +157,7 @@
         <option value="$PROJECT_DIR$/css/semantic/src/themes/terminal/globals/site.variables" />
         <option value="$PROJECT_DIR$/js/terrainTile.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/storyBoard.js" />
         <option value="$PROJECT_DIR$/js/sceneManager.js" />
       </list>
     </option>
@@ -315,12 +324,12 @@
       <workItem from="1510149093595" duration="25776000" />
       <workItem from="1510210743149" duration="32164000" />
       <workItem from="1510309887910" duration="6158000" />
-      <workItem from="1510380659180" duration="10150000" />
+      <workItem from="1510380659180" duration="10836000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74458000" />
+    <option name="totallyTimeSpent" value="75144000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -535,6 +544,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -549,14 +559,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/storyBoard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="26" lean-forward="false" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -684,14 +686,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/terrainTile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1942">
-          <caret line="126" column="11" lean-forward="true" selection-start-line="126" selection-start-column="11" selection-end-line="126" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
@@ -711,10 +705,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/terrainTile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1942">
+          <caret line="126" column="11" lean-forward="true" selection-start-line="126" selection-start-column="11" selection-end-line="126" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/storyBoard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="30" lean-forward="true" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/sceneManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="308" column="109" lean-forward="false" selection-start-line="308" selection-start-column="109" selection-end-line="308" selection-end-column="109" />
+        <state relative-caret-position="476">
+          <caret line="82" column="62" lean-forward="false" selection-start-line="82" selection-start-column="50" selection-end-line="82" selection-end-column="62" />
           <folding />
         </state>
       </provider>

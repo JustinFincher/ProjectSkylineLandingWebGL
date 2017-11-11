@@ -80,7 +80,7 @@ function engineUpdate(time)
     requestAnimationFrame( engineUpdate );
     stats.update();
 
-    renderer.render( terrainScene, terrainCamera, renderTarget ,true);
+    renderer.render( terrainScene, terrainCamera, renderTarget ,false);
     renderer.render( phoneScene, phoneCamera );
 
     // renderer.render( terrainScene, camera );
@@ -230,7 +230,7 @@ function initENV()
         {
             var ambientLight = new THREE.AmbientLight( 0x404040 ); // soft white light
             phoneScene.add( ambientLight );
-            var phoneStudioLight = new THREE.DirectionalLight( 0xffffff, 0.8 );
+            var phoneStudioLight = new THREE.DirectionalLight( 0xffffff, 1.0 );
             phoneScene.add( phoneStudioLight );
             phoneStudioLight.position.copy(new THREE.Vector3(5,10,7.5));
             phoneStudioLight.target = phone;
@@ -339,33 +339,7 @@ function initPhone()
                         }
                     );
                 }
-            )})
-        //     .then(function ()
-        //     {
-        //         return new Promise((resolve,reject) =>
-        //         {
-        //             var imageLoader = new THREE.TextureLoader();
-        //             imageLoader.load(
-        //                 'obj/galaxy-s8/tex/Galaxy-S8-wallpaper-2.jpg',
-        //                 ( texture ) =>
-        //                 {
-        //                     this.phoneScreenTex = texture;
-        //                     console.log('screenTex');
-        //                     resolve();
-        //                 },
-        //                 // Function called when download progresses
-        //                 function ( xhr ) {
-        //                     console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
-        //                 },
-        //                 // Function called when download errors
-        //                 function ( xhr ) {
-        //                     reject();
-        //                 }
-        //             );
-        //         })
-        //     }
-        // )
-            .then(function ()
+            )}).then(function ()
         {
             return new Promise((resolve,reject) =>
             {
@@ -389,7 +363,7 @@ function initPhone()
                         phone.children[0].material.find(x => x.name == 'screen').emissiveMap = renderTarget.texture;
                         phone.children[0].material.find(x => x.name == 'screen').emissive = new THREE.Color(0xffffff );
                         phone.children[0].material.find(x => x.name == 'flash').map = this.phoneFlashTex;
-
+                        phone.children[0].material.find(x => x.name == 'default').color = new THREE.Color(0,0,0);
 
                         resolve();
                     },
