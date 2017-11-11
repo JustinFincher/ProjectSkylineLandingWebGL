@@ -37,7 +37,9 @@ var terrainSize = 10;
 var locationsToGo =
     [
         {lon:10.7927,lat:47.4467,zoom:10},
-        {lon:131.0366,lat:-25.3454,zoom:10},
+        {lon:-23.8207,lat:-45.366,zoom:14},
+        {lon:37.9832,lat:-122.7838,zoom:13},
+        {lon:131.0366,lat:-25.3454,zoom:14},
         {lon:114.1802,lat:22.2572,zoom:10},
         {lon:-7.7748,lat:31.1323,zoom:10}
     ]
@@ -266,7 +268,7 @@ function initENV()
             terrainScene.add( sky );
             // Add Sun Helper
             sunSphere = new THREE.Mesh(
-                new THREE.SphereBufferGeometry( 200, 16, 8 ),
+                new THREE.SphereBufferGeometry( 2, 16, 8 ),
                 new THREE.MeshBasicMaterial( { color: 0xffffff } )
             );
             sunSphere.position.y = - 700000;
