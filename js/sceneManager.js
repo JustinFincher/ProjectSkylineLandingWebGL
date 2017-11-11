@@ -196,14 +196,6 @@ function flyToZXY(z,x,y,boundSize)
                 t.loadzxy(z, loadingGridArray[i].x, loadingGridArray[i].y, containerForTerrains).then(function ()
                 {
                     console.log("Done Loading ZXY with Grid Tile Count = " + gridTileCount);
-                    $('#loadingBar')
-                        .progress(
-                            {
-                                percent: (gridTileCount + 1) /loadingGridArray.length * 78,
-                                text: {
-                                    active  : 'Loaded terrain ' + gridTileCount + ' / ' + loadingGridArray.length
-                                }
-                            });
                     resolve();
                 });
             });
