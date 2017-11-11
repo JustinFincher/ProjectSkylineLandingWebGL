@@ -135,7 +135,7 @@ window.onload = function()
                     }
                 });
         engineUpdate();
-        // $( "#loading" ).fadeOut();
+        $( "#loading" ).fadeOut();
         playSequence();
     });
 }
@@ -152,6 +152,15 @@ function flyToZXY(z,x,y,boundSize)
 {
     return new Promise( (resolve, reject) =>
     {
+        $('#loadingBar')
+            .progress(
+                {
+                    percent: 10,
+                    text: {
+                        active  : 'Loading terrains'
+                    }
+                });
+
         containerForTerrains.position.copy(new THREE.Vector3(-x * terrainSize, y * terrainSize, 0));
 
         var loadingGridArray = [];
@@ -165,23 +174,33 @@ function flyToZXY(z,x,y,boundSize)
             }
         }
         console.log(loadingGridArray);
-        var gridTileCount = 0;
-        Promise.each(loadingGridArray, (vec) =>
+        gridTileCount = 1;
+        var loadingGridPromiseArray = [];
+        for (var i = 0; i < loadingGridArray.length; i++)
         {
-            console.log(gridTileCount);
-            gridTileCount ++;
-            $('#loadingBar')
-                .progress(
-                    {
-                        percent: gridTileCount/loadingGridArray.length * 78,
-                        text: {
-                            active  : 'Loading terrain ' + gridTileCount + ' / ' + loadingGridArray.length
-                        }
-                    });
+            loadingGridPromiseArray[i] = new Promise((resolve, reject) =>
+            {
+                console.log("Doing Loading ZXY with Grid Tile Count = " + gridTileCount);
+                gridTileCount ++;
+                var t = new TerrainTile();
+                t.loadzxy(z, loadingGridArray[i].x, loadingGridArray[i].y, containerForTerrains).then(function ()
+                {
+                    console.log("Done Loading ZXY with Grid Tile Count = " + gridTileCount);
+                    $('#loadingBar')
+                        .progress(
+                            {
+                                percent: gridTileCount/loadingGridArray.length * 78,
+                                text: {
+                                    active  : 'Loading terrain ' + gridTileCount + ' / ' + loadingGridArray.length
+                                }
+                            });
+                    resolve();
+                });
+            });
+        }
 
-            var t = new TerrainTile();
-            return t.loadzxy(z, vec.x, vec.y, containerForTerrains);
-        }).then( () =>
+        var gridTileCount = 0;
+        Promise.all(loadingGridPromiseArray).then( () =>
         {
             console.log("Loading Terrain Grid Done");
             containerPivot = new THREE.Object3D();
@@ -332,10 +351,10 @@ function initPhone()
         {
             return new Promise((resolve,reject) =>
             {
-                var loader = new THREE.OBJLoader();
+                var loader = new THREE.OBMLoader();
 
                 loader.load(
-                    'obj/galaxy-s8/s8.obj',
+                    'obj/galaxy-s8/s8.obm',
                     function ( object )
                     {
                         phone = object;
