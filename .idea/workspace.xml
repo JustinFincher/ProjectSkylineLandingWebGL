@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="040f219d-64cd-47a1-8d4c-555a3c55fe8c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/mapboxImageProcessor.js" afterPath="$PROJECT_DIR$/js/mapboxImageProcessor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/objects/Sky.js" afterPath="$PROJECT_DIR$/js/objects/Sky.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/sceneManager.js" afterPath="$PROJECT_DIR$/js/sceneManager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/storyBoard.js" afterPath="$PROJECT_DIR$/js/storyBoard.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/terrainTile.js" afterPath="$PROJECT_DIR$/js/terrainTile.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state relative-caret-position="68">
+              <caret line="4" column="68" lean-forward="false" selection-start-line="4" selection-start-column="68" selection-end-line="4" selection-end-column="68" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -55,10 +52,10 @@
       <file leaf-file-name="sceneManager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/sceneManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="58" column="17" lean-forward="false" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
+            <state relative-caret-position="340">
+              <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="85" selection-end-column="1" />
               <folding>
-                <marker date="1510421707392" expanded="true" signature="9514:9789" ph="..." />
+                <marker date="1510422851398" expanded="true" signature="9744:10019" ph="..." />
               </folding>
             </state>
           </provider>
@@ -74,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mapboxImageProcessor.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mapboxImageProcessor.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/mapboxImageProcessor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+            <state relative-caret-position="411">
+              <caret line="65" column="59" lean-forward="false" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -98,7 +95,7 @@
         <entry file="file://$PROJECT_DIR$/js/terrainTile.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
-              <caret line="2" column="2" lean-forward="true" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+              <caret line="2" column="2" lean-forward="false" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -127,7 +124,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Path</find>
       <find>color</find>
       <find>background</find>
       <find>text</find>
@@ -153,10 +149,11 @@
       <find>terrainCamera</find>
       <find>controls</find>
       <find>sunLight.target</find>
-      <find>sun</find>
-      <find>mieCo</find>
       <find>sky</find>
       <find>loadingBar</find>
+      <find>mieCo</find>
+      <find>sun</find>
+      <find>2048</find>
     </findStrings>
     <replaceStrings>
       <replace>terminal</replace>
@@ -179,12 +176,12 @@
         <option value="$PROJECT_DIR$/css/semantic/src/theme.less" />
         <option value="$PROJECT_DIR$/css/semantic/src/themes/terminal/globals/site.overrides" />
         <option value="$PROJECT_DIR$/css/semantic/src/themes/terminal/globals/site.variables" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/mapboxImageProcessor.js" />
         <option value="$PROJECT_DIR$/js/objects/Sky.js" />
-        <option value="$PROJECT_DIR$/js/sceneManager.js" />
         <option value="$PROJECT_DIR$/js/terrainTile.js" />
         <option value="$PROJECT_DIR$/js/storyBoard.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/sceneManager.js" />
+        <option value="$PROJECT_DIR$/js/mapboxImageProcessor.js" />
       </list>
     </option>
   </component>
@@ -265,6 +262,32 @@
               <item name="ProjectSkylineLandingWebGL" type="b2602c69:ProjectViewProjectNode" />
               <item name="ProjectSkylineLandingWebGL" type="462c0819:PsiDirectoryNode" />
               <item name="bower_components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjectSkylineLandingWebGL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjectSkylineLandingWebGL" type="462c0819:PsiDirectoryNode" />
+              <item name="bower_components" type="462c0819:PsiDirectoryNode" />
+              <item name="bowser" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjectSkylineLandingWebGL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjectSkylineLandingWebGL" type="462c0819:PsiDirectoryNode" />
+              <item name="bower_components" type="462c0819:PsiDirectoryNode" />
+              <item name="bowser" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjectSkylineLandingWebGL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjectSkylineLandingWebGL" type="462c0819:PsiDirectoryNode" />
+              <item name="bower_components" type="462c0819:PsiDirectoryNode" />
+              <item name="three.js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProjectSkylineLandingWebGL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProjectSkylineLandingWebGL" type="462c0819:PsiDirectoryNode" />
+              <item name="bower_components" type="462c0819:PsiDirectoryNode" />
+              <item name="three.js" type="462c0819:PsiDirectoryNode" />
+              <item name="three.js" type="620a8d5e:NestingTreeNode" />
             </path>
             <path>
               <item name="ProjectSkylineLandingWebGL" type="b2602c69:ProjectViewProjectNode" />
@@ -357,12 +380,12 @@
       <workItem from="1510210743149" duration="32164000" />
       <workItem from="1510309887910" duration="6158000" />
       <workItem from="1510380659180" duration="13024000" />
-      <workItem from="1510415137463" duration="6045000" />
+      <workItem from="1510415137463" duration="6708000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83377000" />
+    <option name="totallyTimeSpent" value="84040000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -448,7 +471,7 @@
         <state relative-caret-position="697">
           <caret line="41" column="32" lean-forward="false" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
           <folding>
-            <marker date="1510421707392" expanded="true" signature="9514:9789" ph="..." />
+            <marker date="1510422851398" expanded="true" signature="9744:10019" ph="..." />
           </folding>
         </state>
       </provider>
@@ -500,7 +523,7 @@
         <state relative-caret-position="2006">
           <caret line="118" column="6" lean-forward="true" selection-start-line="118" selection-start-column="6" selection-end-line="118" selection-end-column="6" />
           <folding>
-            <marker date="1510421707392" expanded="true" signature="9514:9789" ph="..." />
+            <marker date="1510422851398" expanded="true" signature="9744:10019" ph="..." />
           </folding>
         </state>
       </provider>
@@ -697,28 +720,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/sceneManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="58" column="17" lean-forward="false" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
-          <folding>
-            <marker date="1510421707392" expanded="true" signature="9514:9789" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/mapboxImageProcessor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/terrainTile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="2" lean-forward="true" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+          <caret line="2" column="2" lean-forward="false" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
           <folding />
         </state>
       </provider>
@@ -731,18 +736,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/storyBoard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="41" lean-forward="false" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state relative-caret-position="68">
+          <caret line="4" column="68" lean-forward="false" selection-start-line="4" selection-start-column="68" selection-end-line="4" selection-end-column="68" />
           <folding>
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -755,6 +752,32 @@
             <element signature="n#style#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/sceneManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="85" selection-end-column="1" />
+          <folding>
+            <marker date="1510422851398" expanded="true" signature="9744:10019" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/storyBoard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="41" lean-forward="false" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/mapboxImageProcessor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="65" column="59" lean-forward="false" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="59" />
+          <folding />
         </state>
       </provider>
     </entry>

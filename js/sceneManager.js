@@ -76,7 +76,14 @@ var sunEffectParameter = new Proxy(sunEffectValue, {
 });
 var controls;
 var phone;
-var renderTarget = new THREE.WebGLRenderTarget( 1024, 2048, { format: THREE.RGBFormat, minFilter: THREE.LinearFilter, magFilter: THREE.NearestFilter} );
+
+if (bowser.osname == 'ios' || bowser.osname =='android')
+{
+    var renderTarget = new THREE.WebGLRenderTarget( 512, 1024, { format: THREE.RGBFormat, minFilter: THREE.LinearFilter, magFilter: THREE.NearestFilter} );
+}else
+{
+    var renderTarget = new THREE.WebGLRenderTarget( 1024, 2048, { format: THREE.RGBFormat, minFilter: THREE.LinearFilter, magFilter: THREE.NearestFilter} );
+}
 
 var hidden, state, visibilityChange;
 if (typeof document.hidden !== "undefined") {
