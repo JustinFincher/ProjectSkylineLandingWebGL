@@ -4,26 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <title>Skyline</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/semantic/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="css/semantic/dist/semantic.min.js"></script>
     <script src="bower_components/three.js/three.js"></script>
     <script src="bower_components/tween.js/src/Tween.js"></script>
     <script src="bower_components/bluebird/js/browser/bluebird.js"></script>
-    <script src="js/libs/spin.min.js"></script>
+    <script src="node_modules/paralleljs/lib/parallel.js"></script>
 </head>
 <body>
-<div id="container"></div>
-<div id="spinner" style="position: fixed; width: 100%; height: 100%; left: 0; top: 0; background: rgba(0, 0, 0, 1); z-index: 10;">
-    <p style="position: absolute; width: 100%; top: 70%; color: white; text-align: center;">
-Loading Stuff...
-    </p>
+<div id="stats"></div>
+
+<div id="loading" style="position: fixed; width: 100%; height: 100%; left: 0; top: 0; background: rgba(0, 0, 0, 1); z-index: 10;">
+
+    <div style="color: white; position: absolute; width: 100%; top: 40%;" class="ui">
+        <div class="ui container">
+            <div style="text-align: center">
+                <h1>Skyline</h1>
+                <p>
+                    Android Live Wallpaper with 3D World-Wide Terrain Data
+                </p>
+
+                <div class="overlay fixed" style="position: fixed; top: 80%; width: 60%; left:20%; z-index: 10;">
+                    <div class="ui container">
+                        <div id="loadingBar" class="ui inverted active tiny black progress fluid"  data-value="0" data-total="10">
+                            <div class="bar">
+
+                            </div>
+                            <div class="label">Uploading Files</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
+
 <div id="intro" style="position: fixed; width: 100%; height: 100%; left: 0; top: 0; background: rgba(0, 0, 0, 0); z-index: 9;">
-    <p style="position: absolute; width: 100%; top: 80%; color: white; text-align: center;">
-        Skyline Live Wallpaper
-    </p>
+
+    <div class="ui inverted vertical masthead center aligned segment" style="background: transparent;">
+
+        <div class="ui container">
+            <div class="ui grid">
+                <div class="computer only tablet only column">
+                    <div class="ui secondary inverted pointing menu fluid">
+                        <a class="toc item">
+                            <i class="sidebar icon"></i>
+                        </a>
+                        <a href="#intro" class="active item">Intro</a>
+                        <a href="#world" class="item">World</a>
+                        <a class="item">Company</a>
+                        <a class="item">Careers</a>
+                        <div class="right item">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div style="position: absolute; width: 100%; top: 80%; color: white; text-align: center;">
+        <h2>Skyline Live Wallpaper</h2>
+        <a class="ui basic inverted button">Download</a>
+    </div>
 </div>
+
 </body>
+<script src="js/BufferGeometryUtils.js"></script>
 <script src="js/controls/OrbitControls.js"></script>
 <script src="js/Detector.js"></script>
 <script src="js/libs/dat.gui.min.js"></script>
@@ -35,30 +87,4 @@ Loading Stuff...
 <script src="js/mapboxImageProcessor.js"></script>
 <script src="js/terrainTile.js"></script>
 
-<script>
-    var opts = {
-        lines: 11 // The number of lines to draw
-        , length: 56 // The length of each line
-        , width: 2 // The line thickness
-        , radius: 55 // The radius of the inner circle
-        , scale: 1 // Scales overall size of the spinner
-        , corners: 1 // Corner roundness (0..1)
-        , color: '#ffffff' // #rgb or #rrggbb or array of colors
-        , opacity: 0.25 // Opacity of the lines
-        , rotate: 0 // The rotation offset
-        , direction: 1 // 1: clockwise, -1: counterclockwise
-        , speed: 1 // Rounds per second
-        , trail: 95 // Afterglow percentage
-        , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
-        , zIndex: 2e9 // The z-index (defaults to 2000000000)
-        , className: 'spinner' // The CSS class to assign to the spinner
-        , top: '50%' // Top position relative to parent
-        , left: '50%' // Left position relative to parent
-        , shadow: false // Whether to render a shadow
-        , hwaccel: false // Whether to use hardware acceleration
-        , position: 'absolute' // Element positioning
-    }
-    var target = document.getElementById('spinner')
-    var spinner = new Spinner(opts).spin(target);
-</script>
 </html>

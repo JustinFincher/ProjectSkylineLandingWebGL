@@ -20,9 +20,9 @@ THREE.DefaultLoadingManager.onError = function ( url ) {
 
 if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
-var container = document.getElementById( 'container' );
+// var container = document.getElementById( 'stats' );
 stats = new Stats();
-container.appendChild( stats.dom );
+// container.appendChild( stats.dom );
 
 function onWindowResize() {
     phoneCamera.aspect = window.innerWidth / window.innerHeight;
@@ -104,14 +104,38 @@ window.onload = function()
    console.log(loc);
     flyToCoordinate( loc.lon,loc.lat,loc.zoom,1).then(function ()
     {
+        $('#loadingBar')
+            .progress(
+                {
+                    percent: 80,
+                    text: {
+                        active  : 'Loading Phone Model'
+                    }
+                });
         return initPhone();
     }).then(function ()
     {
+        $('#loadingBar')
+            .progress(
+                {
+                    percent: 90,
+                    text: {
+                        active  : 'Loading Environment'
+                    }
+                });
         return initENV();
     }).then(function ()
     {
+        $('#loadingBar')
+            .progress(
+                {
+                    percent: 100,
+                    text: {
+                        active  : 'Done'
+                    }
+                });
         engineUpdate();
-        $( "#spinner" ).fadeOut();
+        // $( "#loading" ).fadeOut();
         playSequence();
     });
 }
@@ -141,8 +165,20 @@ function flyToZXY(z,x,y,boundSize)
             }
         }
         console.log(loadingGridArray);
+        var gridTileCount = 0;
         Promise.each(loadingGridArray, (vec) =>
         {
+            console.log(gridTileCount);
+            gridTileCount ++;
+            $('#loadingBar')
+                .progress(
+                    {
+                        percent: gridTileCount/loadingGridArray.length * 78,
+                        text: {
+                            active  : 'Loading terrain ' + gridTileCount + ' / ' + loadingGridArray.length
+                        }
+                    });
+
             var t = new TerrainTile();
             return t.loadzxy(z, vec.x, vec.y, containerForTerrains);
         }).then( () =>

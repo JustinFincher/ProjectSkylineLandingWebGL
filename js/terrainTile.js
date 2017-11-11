@@ -34,6 +34,8 @@ TerrainTile.prototype.loadzxy = function (z,x,y,parent)
                 heightData[i * 4+2] = height * 256;
             }
             this.terrainGeometry.verticesNeedUpdate = true;
+            this.terrainGeometry.computeFaceNormals();
+            this.terrainGeometry.computeVertexNormals();
 
             canvasContext.putImageData(imgd, 0,0);
             var jpegUrl = canvasContext.canvas.toDataURL("image/jpeg");
