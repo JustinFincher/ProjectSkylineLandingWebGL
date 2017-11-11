@@ -155,7 +155,7 @@ function flyToZXY(z,x,y,boundSize)
         $('#loadingBar')
             .progress(
                 {
-                    percent: 10,
+                    percent: 1,
                     text: {
                         active  : 'Loading terrains'
                     }
@@ -174,7 +174,7 @@ function flyToZXY(z,x,y,boundSize)
             }
         }
         console.log(loadingGridArray);
-        gridTileCount = 1;
+        gridTileCount = 0;
         var loadingGridPromiseArray = [];
         for (var i = 0; i < loadingGridArray.length; i++)
         {
@@ -183,15 +183,25 @@ function flyToZXY(z,x,y,boundSize)
                 console.log("Doing Loading ZXY with Grid Tile Count = " + gridTileCount);
                 gridTileCount ++;
                 var t = new TerrainTile();
+
+                $('#loadingBar')
+                    .progress(
+                        {
+                            percent: gridTileCount / 2 /loadingGridArray.length * 78,
+                            text: {
+                                active  : 'Loading terrain ' + gridTileCount + ' / ' + loadingGridArray.length
+                            }
+                        });
+
                 t.loadzxy(z, loadingGridArray[i].x, loadingGridArray[i].y, containerForTerrains).then(function ()
                 {
                     console.log("Done Loading ZXY with Grid Tile Count = " + gridTileCount);
                     $('#loadingBar')
                         .progress(
                             {
-                                percent: gridTileCount/loadingGridArray.length * 78,
+                                percent: (gridTileCount + 1) /loadingGridArray.length * 78,
                                 text: {
-                                    active  : 'Loading terrain ' + gridTileCount + ' / ' + loadingGridArray.length
+                                    active  : 'Loaded terrain ' + gridTileCount + ' / ' + loadingGridArray.length
                                 }
                             });
                     resolve();
