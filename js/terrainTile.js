@@ -13,6 +13,16 @@ TerrainTile.prototype.loadzxy = function (z,x,y,parent)
             // console.log('this.terrainSize = ' + terrainSize);
             this.terrainGeometry = new THREE.PlaneGeometry( terrainSize, terrainSize, this.size-1,this.size-1 );
             // return imageToHeightData(image);
+
+            $('#loadingBar')
+                .progress(
+                    {
+                        percent: ($('#loadingBar').data("percent") + 2) / 100,
+                        text: {
+                            active  : 'Loading terrain ' + $('#loadingBar').data("percent") + "%"
+                        }
+                    });
+
             return imageToCanvasContext(image);
         }).then((canvasContext) =>
         {
@@ -36,6 +46,15 @@ TerrainTile.prototype.loadzxy = function (z,x,y,parent)
             this.terrainGeometry.verticesNeedUpdate = true;
             this.terrainGeometry.computeFaceNormals();
             this.terrainGeometry.computeVertexNormals();
+
+            $('#loadingBar')
+                .progress(
+                    {
+                        percent: ($('#loadingBar').data("percent") + 2) / 100,
+                        text: {
+                            active  : 'Loading terrain ' + $('#loadingBar').data("percent") + "%"
+                        }
+                    });
 
             canvasContext.putImageData(imgd, 0,0);
             var jpegUrl = canvasContext.canvas.toDataURL("image/jpeg");
@@ -92,6 +111,14 @@ TerrainTile.prototype.loadzxy = function (z,x,y,parent)
             });
         }).then( () =>
         {
+            $('#loadingBar')
+                .progress(
+                    {
+                        percent: ($('#loadingBar').data("percent") + 2) / 100,
+                        text: {
+                            active  : 'Loading terrain ' + $('#loadingBar').data("percent") + "%"
+                        }
+                    });
             this.terrainPlane = new THREE.Mesh( this.terrainGeometry, this.terrainMaterial );
             parent.add(this.terrainPlane);
             this.terrainPlane.position.copy(getWorldPosFromZXY(z,x,y));

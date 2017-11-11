@@ -100,6 +100,15 @@ window.onload = function()
     phoneCamera.position.z = 5;
     phoneCamera.position.y = 3.6;
 
+    $('#loadingBar')
+        .progress(
+            {
+                percent: 0,
+                text: {
+                    active  : 'Loading'
+                }
+            });
+
    var loc = locationsToGo[Math.floor(Math.random() * locationsToGo.length)];
    console.log(loc);
     flyToCoordinate( loc.lon,loc.lat,loc.zoom,1).then(function ()
@@ -155,7 +164,7 @@ function flyToZXY(z,x,y,boundSize)
         $('#loadingBar')
             .progress(
                 {
-                    percent: 1,
+                    percent: ($('#loadingBar').data("percent") + 2) / 100,
                     text: {
                         active  : 'Loading terrains'
                     }
@@ -184,18 +193,17 @@ function flyToZXY(z,x,y,boundSize)
                 gridTileCount ++;
                 var t = new TerrainTile();
 
-                $('#loadingBar')
-                    .progress(
-                        {
-                            percent: gridTileCount / 2 /loadingGridArray.length * 78,
-                            text: {
-                                active  : 'Loading terrain ' + gridTileCount + ' / ' + loadingGridArray.length
-                            }
-                        });
-
                 t.loadzxy(z, loadingGridArray[i].x, loadingGridArray[i].y, containerForTerrains).then(function ()
                 {
                     console.log("Done Loading ZXY with Grid Tile Count = " + gridTileCount);
+                    $('#loadingBar')
+                        .progress(
+                            {
+                                percent: ($('#loadingBar').data("percent") + 2) / 100,
+                                text: {
+                                    active  : 'Loading terrain ' + $('#loadingBar').data("percent") + "%"
+                                }
+                            });
                     resolve();
                 });
             });
@@ -293,6 +301,14 @@ function initPhone()
                 },
                 // Function called when download progresses
                 function ( xhr ) {
+                    $('#loadingBar')
+                        .progress(
+                            {
+                                percent: 80 + (xhr.loaded / xhr.total * 10),
+                                text: {
+                                    active  : 'Loading Phone Model '  +  (xhr.loaded / xhr.total * 100 ) + " %"
+                                }
+                            });
                     console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
                 },
                 // Function called when download errors
