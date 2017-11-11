@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="040f219d-64cd-47a1-8d4c-555a3c55fe8c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/sceneManager.js" afterPath="$PROJECT_DIR$/js/sceneManager.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,8 +29,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="76" lean-forward="false" selection-start-line="13" selection-start-column="76" selection-end-line="13" selection-end-column="76" />
+            <state relative-caret-position="272">
+              <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="14" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -49,8 +49,8 @@
       <file leaf-file-name="sceneManager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/sceneManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="183" column="33" lean-forward="true" selection-start-line="183" selection-start-column="33" selection-end-line="183" selection-end-column="33" />
+            <state relative-caret-position="299">
+              <caret line="94" column="29" lean-forward="false" selection-start-line="94" selection-start-column="18" selection-end-line="94" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -79,8 +79,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>distance</find>
-      <find>asyncHeightImage</find>
       <find>loadzxy</find>
       <find>terrainscen</find>
       <find>render</find>
@@ -109,6 +107,8 @@
       <find>fade</find>
       <find>objl</find>
       <find>gridTileCount</find>
+      <find>container</find>
+      <find>appendChild</find>
     </findStrings>
     <replaceStrings>
       <replace>terminal</replace>
@@ -302,12 +302,12 @@
       <workItem from="1510149093595" duration="25776000" />
       <workItem from="1510210743149" duration="32164000" />
       <workItem from="1510309887910" duration="6158000" />
-      <workItem from="1510380659180" duration="8379000" />
+      <workItem from="1510380659180" duration="8540000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72687000" />
+    <option name="totallyTimeSpent" value="72848000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -680,8 +680,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="76" lean-forward="false" selection-start-line="13" selection-start-column="76" selection-end-line="13" selection-end-column="76" />
+        <state relative-caret-position="272">
+          <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="14" />
           <folding>
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -698,8 +698,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/sceneManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="183" column="33" lean-forward="true" selection-start-line="183" selection-start-column="33" selection-end-line="183" selection-end-column="33" />
+        <state relative-caret-position="299">
+          <caret line="94" column="29" lean-forward="false" selection-start-line="94" selection-start-column="18" selection-end-line="94" selection-end-column="29" />
           <folding />
         </state>
       </provider>
