@@ -37,11 +37,13 @@ var terrainSize = 10;
 var locationsToGo =
     [
         {lon:10.7927,lat:47.4467,zoom:10},
-        {lon:-23.8207,lat:-45.366,zoom:14},
-        {lon:37.9832,lat:-122.7838,zoom:13},
+        {lon:98.3947,lat:27.2578,zoom:10},
+        {lon:-122.7838,lat:37.9832,zoom:12},
         {lon:131.0366,lat:-25.3454,zoom:14},
         {lon:114.1802,lat:22.2572,zoom:10},
-        {lon:-7.7748,lat:31.1323,zoom:10}
+        {lon:-7.7748,lat:31.1323,zoom:10},
+        {lon:40.2548,lat:43.3103,zoom:11},
+        {lon:-71.4981,lat:10.8865,zoom:10}
     ]
 
 var terrainScene = new THREE.Scene();
@@ -54,12 +56,12 @@ var containerPivot;
 var sky,sunSphere,sunLight;
 
 var sunEffectValue = {
-    turbidity: 10,
-    rayleigh: 2.6,
-    mieCoefficient: 0.003,
+    turbidity: 20,
+    rayleigh: 1.769,
+    mieCoefficient: 0.001,
     mieDirectionalG: 0.8,
-    luminance: 1.1,
-    inclination: 0.50743, // elevation / inclination
+    luminance: 1,
+    inclination: 0.49, // elevation / inclination
     azimuth: 0.25, // Facing front,
     sun: true
 };
@@ -114,6 +116,8 @@ function renderGraphic()
 {
     renderer.render( terrainScene, terrainCamera, renderTarget ,false);
     renderer.render( phoneScene, phoneCamera );
+    //
+    // renderer.render( terrainScene, phoneCamera );
 }
 
 window.onload = function()
@@ -122,8 +126,8 @@ window.onload = function()
     window.addEventListener( 'resize', onWindowResize, false );
     document.body.appendChild(renderer.domElement);
 
-    terrainCamera.position.copy(new THREE.Vector3(0, 12,20));
-    terrainCamera.lookAt(new THREE.Vector3(0,0,0));
+    terrainCamera.position.copy(new THREE.Vector3(0, 10 ,50));
+    terrainCamera.lookAt(new THREE.Vector3(0,12,0));
 
     phoneCamera.position.z = 5;
     phoneCamera.position.y = 3.6;
@@ -183,6 +187,8 @@ function flyToCoordinate(lon,lat,zoom,boundSize)
 {
     var tilex = long2tile(lon,zoom);
     var tiley = lat2tile(lat,zoom);
+
+    console.log(tilex,tiley);
     return flyToZXY(zoom,tilex,tiley,boundSize);
 }
 function flyToZXY(z,x,y,boundSize)
@@ -192,7 +198,7 @@ function flyToZXY(z,x,y,boundSize)
         $('#loadingBar')
             .progress(
                 {
-                    percent: ($('#loadingBar').data("percent") + 2) / 100,
+                    percent: 10,
                     text: {
                         active  : 'Loading terrains'
                     }
@@ -211,25 +217,34 @@ function flyToZXY(z,x,y,boundSize)
             }
         }
         console.log(loadingGridArray);
-        gridTileCount = 0;
+        this.gridTileCount = 0;
         var loadingGridPromiseArray = [];
         for (var i = 0; i < loadingGridArray.length; i++)
         {
             loadingGridPromiseArray[i] = new Promise((resolve, reject) =>
             {
-                console.log("Doing Loading ZXY with Grid Tile Count = " + gridTileCount);
-                gridTileCount ++;
+                this.gridTileCount++;
+                console.log("Doing Loading ZXY with Grid Tile Count = " + this.gridTileCount);
                 var t = new TerrainTile();
+                $('#loadingBar')
+                    .progress(
+                        {
+                            percent: this.gridTileCount/loadingGridArray.length * 80 / 2,
+                            text: {
+                                active  : 'Loaded terrain ' + this.gridTileCount / 2 + " / " + loadingGridArray.length
+                            }
+                        });
 
-                t.loadzxy(z, loadingGridArray[i].x, loadingGridArray[i].y, containerForTerrains).then(function ()
+                t.loadzxy(z, loadingGridArray[i].x, loadingGridArray[i].y, containerForTerrains).then(() =>
                 {
-                    console.log("Done Loading ZXY with Grid Tile Count = " + gridTileCount);
+                    console.log("Done Loading ZXY with Grid Tile Count = " + this.gridTileCount);
+                    this.gridTileCount++;
                     $('#loadingBar')
                         .progress(
                             {
-                                percent: ($('#loadingBar').data("percent") + 2) / 100,
+                                percent: this.gridTileCount/loadingGridArray.length * 80 / 2,
                                 text: {
-                                    active  : 'Loading terrain ' + $('#loadingBar').data("percent") + "%"
+                                    active  : 'Loaded terrain ' + this.gridTileCount / 2 + " / " + loadingGridArray.length
                                 }
                             });
                     resolve();
@@ -264,30 +279,30 @@ function initENV()
             phoneStudioLight.target = phone;
 
             sky = new THREE.Sky();
-            sky.scale.setScalar( 450000 );
+            sky.scale.setScalar( 20000 );
             terrainScene.add( sky );
             // Add Sun Helper
             sunSphere = new THREE.Mesh(
                 new THREE.SphereBufferGeometry( 2, 16, 8 ),
                 new THREE.MeshBasicMaterial( { color: 0xffffff } )
             );
-            sunSphere.position.y = - 700000;
+            sunSphere.position.y = - 30000;
             sunSphere.visible = true;
             terrainScene.add( sunSphere );
 
 
-            sunLight = new THREE.DirectionalLight( 0xffffff, 1.2 );
+            sunLight = new THREE.DirectionalLight( 0xffffff, 0.9 );
             sunSphere.add( sunLight );
             sunLight.target = containerPivot;
 
             initSun();
 
-            controls = new THREE.OrbitControls( terrainCamera, renderer.domElement );
-            controls.addEventListener( 'change', renderer );
-            controls.enableZoom = false;
-            controls.enablePan = true;
-            controls.enableRotate = true;
-            controls.enabled = false;
+            // controls = new THREE.OrbitControls( terrainCamera, renderer.domElement );
+            // controls.enabled = false;
+            // controls.addEventListener( 'change', renderer );
+            // controls.enableZoom = false;
+            // controls.enablePan = true;
+            // controls.enableRotate = true;
 
             resolve();
         }
@@ -296,7 +311,7 @@ function initENV()
 
 function initSun()
 {
-    var distance = 400000;
+    var distance = 18000;
     var uniforms = sky.material.uniforms;
     uniforms.turbidity.value = sunEffectParameter.turbidity;
     uniforms.rayleigh.value = sunEffectParameter.rayleigh;
@@ -334,7 +349,7 @@ function initPhone()
                             {
                                 percent: 80 + (xhr.loaded / xhr.total * 10),
                                 text: {
-                                    active  : 'Loading Phone Model '  +  (xhr.loaded / xhr.total * 100 ) + " %"
+                                    active  : 'Loading Phone Model '  +  (xhr.loaded / xhr.total * 100) + " %"
                                 }
                             });
                     console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );

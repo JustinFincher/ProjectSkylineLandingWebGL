@@ -1,7 +1,13 @@
 var apiKey = "pk.eyJ1IjoibWF0dCIsImEiOiJTUHZkajU0In0.oB-OGTMFtpkga8vC48HjIg";
 
-function long2tile(lon,zoom) { return (Math.floor((lon+180)/360*Math.pow(2,zoom))); }
-function lat2tile(lat,zoom)  { return (Math.floor((1-Math.log(Math.tan(lat*Math.PI/180) + 1/Math.cos(lat*Math.PI/180))/Math.PI)/2 *Math.pow(2,zoom))); }
+function long2tile(lon,zoom)
+{
+    return (Math.floor((lon+180)/360*Math.pow(2,zoom)));
+}
+function lat2tile(lat,zoom)
+{
+    return (Math.floor((1-Math.log(Math.tan(lat*Math.PI/180) + 1/Math.cos(lat*Math.PI/180))/Math.PI)/2 *Math.pow(2,zoom)));
+}
 function tile2long(x,z) {
     return (x/Math.pow(2,z)*360-180);
 }
@@ -13,6 +19,7 @@ function tile2lat(y,z) {
 function asyncHeightImage(z,x,y)
 {
     var imageURL = `https://api.mapbox.com/v4/mapbox.terrain-rgb/${z}/${x}/${y}.pngraw?access_token=${apiKey}`;
+    console.log(imageURL);
     return new Promise(function (resolve, reject)
     {
         var img = new Image();
