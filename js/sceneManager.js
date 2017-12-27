@@ -1,3 +1,11 @@
+var EnvEnum =
+    {
+    DEBUG:0,
+    PROD:1
+};
+
+var globalEnv = EnvEnum.DEBUG;
+
 var globalLoaderProgress = 0;
 
 THREE.DefaultLoadingManager.onStart = function ( url, itemsLoaded, itemsTotal )
@@ -193,10 +201,16 @@ window.onload = function()
 
 function flyToCoordinate(lon,lat,zoom,boundSize)
 {
+
     var tilex = long2tile(lon,zoom);
     var tiley = lat2tile(lat,zoom);
 
     console.log(tilex,tiley);
+
+    if (globalEnv === EnvEnum.DEBUG)
+    {
+        downloadZXY(zoom,tilex,tiley,boundSize);
+    }
     return flyToZXY(zoom,tilex,tiley,boundSize);
 }
 function flyToZXY(z,x,y,boundSize)
@@ -234,27 +248,27 @@ function flyToZXY(z,x,y,boundSize)
                 this.gridTileCount++;
                 console.log("Doing Loading ZXY with Grid Tile Count = " + this.gridTileCount);
                 var t = new TerrainTile();
-                $('#loadingBar')
-                    .progress(
-                        {
-                            percent: this.gridTileCount/loadingGridArray.length * 80 / 2,
-                            text: {
-                                active  : 'Loaded terrain ' + this.gridTileCount / 2 + " / " + loadingGridArray.length
-                            }
-                        });
+                // $('#loadingBar')
+                //     .progress(
+                //         {
+                //             percent: this.gridTileCount/loadingGridArray.length * 80 / 2,
+                //             text: {
+                //                 active  : 'Loaded terrain ' + this.gridTileCount / 2 + " / " + loadingGridArray.length
+                //             }
+                //         });
 
                 t.loadzxy(z, loadingGridArray[i].x, loadingGridArray[i].y, containerForTerrains).then(() =>
                 {
-                    console.log("Done Loading ZXY with Grid Tile Count = " + this.gridTileCount);
-                    this.gridTileCount++;
-                    $('#loadingBar')
-                        .progress(
-                            {
-                                percent: this.gridTileCount/loadingGridArray.length * 80 / 2,
-                                text: {
-                                    active  : 'Loaded terrain ' + this.gridTileCount / 2 + " / " + loadingGridArray.length
-                                }
-                            });
+                    // console.log("Done Loading ZXY with Grid Tile Count = " + this.gridTileCount);
+                    // this.gridTileCount++;
+                    // $('#loadingBar')
+                    //     .progress(
+                    //         {
+                    //             percent: this.gridTileCount/loadingGridArray.length * 80 / 2,
+                    //             text: {
+                    //                 active  : 'Loaded terrain ' + this.gridTileCount / 2 + " / " + loadingGridArray.length
+                    //             }
+                    //         });
                     resolve();
                 });
             });

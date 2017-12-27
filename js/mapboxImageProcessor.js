@@ -33,6 +33,20 @@ function asyncHeightImage(z,x,y)
         img.src = imageURL;
     });
 }
+function asyncColorImage(z,x,y)
+{
+    var imageURL = `https://api.mapbox.com/v4/mapbox.satellite/${z}/${x}/${y}.jpg80?access_token=${apiKey}`;
+    return new Promise(function (resolve, reject)
+    {
+        var img = new Image();
+        img.setAttribute('crossOrigin', 'anonymous');
+        img.onload = function ()
+        {
+            resolve(this);
+        };
+        img.src = imageURL;
+    });
+}
 function imageToCanvasContext(img)
 {
     return new Promise(function (resolve, reject)
