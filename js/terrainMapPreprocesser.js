@@ -4,7 +4,6 @@ function downloadZXY(z,x,y,boundSize)
     {
         var combineDisplaceAndColor = false;
 
-        var singleTileSize = 256;
         var toBeSavedDisplacementCanvas = document.createElement('canvas');
         toBeSavedDisplacementCanvas.width = (boundSize * 2 + 1) * singleTileSize;
         toBeSavedDisplacementCanvas.height = (boundSize * 2 + 1) * singleTileSize;

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="040f219d-64cd-47a1-8d4c-555a3c55fe8c" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change beforePath="$PROJECT_DIR$/js/sceneManager.js" afterPath="$PROJECT_DIR$/js/sceneManager.js" />
       <change beforePath="$PROJECT_DIR$/js/terrainMapPreprocesser.js" afterPath="$PROJECT_DIR$/js/terrainMapPreprocesser.js" />
       <change beforePath="$PROJECT_DIR$/js/terrainTile.js" afterPath="$PROJECT_DIR$/js/terrainTile.js" />
@@ -21,8 +22,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+            <state relative-caret-position="628">
+              <caret line="107" column="40" lean-forward="false" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -43,21 +44,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sceneManager.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sceneManager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/sceneManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="214" column="1" lean-forward="true" selection-start-line="214" selection-start-column="1" selection-end-line="214" selection-end-column="1" />
+            <state relative-caret-position="353">
+              <caret line="213" column="5" lean-forward="true" selection-start-line="213" selection-start-column="5" selection-end-line="213" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="terrainMapPreprocesser.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="terrainMapPreprocesser.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/terrainMapPreprocesser.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="102" column="91" lean-forward="false" selection-start-line="102" selection-start-column="91" selection-end-line="102" selection-end-column="91" />
+            <state relative-caret-position="80">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -66,8 +67,8 @@
       <file leaf-file-name="terrainTile.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/terrainTile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-146">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="324">
+              <caret line="60" column="45" lean-forward="false" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -77,7 +78,7 @@
         <entry file="file://$PROJECT_DIR$/bower_components/three.js/three.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="317">
-              <caret line="17753" column="30" lean-forward="true" selection-start-line="17753" selection-start-column="30" selection-end-line="17753" selection-end-column="30" />
+              <caret line="17753" column="30" lean-forward="false" selection-start-line="17753" selection-start-column="30" selection-end-line="17753" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -86,8 +87,8 @@
       <file leaf-file-name="storyBoard.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/storyBoard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="640">
-              <caret line="40" column="136" lean-forward="false" selection-start-line="40" selection-start-column="136" selection-end-line="40" selection-end-column="136" />
+            <state relative-caret-position="304">
+              <caret line="19" column="58" lean-forward="false" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -136,8 +137,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>initENV</find>
-      <find>p</find>
       <find>sunEffectParameter</find>
       <find>download</find>
       <find>sphere</find>
@@ -146,7 +145,6 @@
       <find>sunLightsunLight</find>
       <find>control</find>
       <find>sunli</find>
-      <find>terrainCamera</find>
       <find>controls</find>
       <find>sunLight.target</find>
       <find>sky</find>
@@ -166,6 +164,9 @@
       <find>loadz</find>
       <find>material</find>
       <find>load</find>
+      <find>terrainCamera</find>
+      <find>renderTarget</find>
+      <find>terrainGeometry</find>
     </findStrings>
     <replaceStrings>
       <replace>terminal</replace>
@@ -190,11 +191,11 @@
         <option value="$PROJECT_DIR$/css/semantic/src/themes/terminal/globals/site.variables" />
         <option value="$PROJECT_DIR$/js/objects/Sky.js" />
         <option value="$PROJECT_DIR$/js/storyBoard.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/mapboxImageProcessor.js" />
-        <option value="$PROJECT_DIR$/js/sceneManager.js" />
-        <option value="$PROJECT_DIR$/js/terrainTile.js" />
         <option value="$PROJECT_DIR$/js/terrainMapPreprocesser.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/terrainTile.js" />
+        <option value="$PROJECT_DIR$/js/sceneManager.js" />
       </list>
     </option>
   </component>
@@ -371,12 +372,12 @@
       <workItem from="1510380659180" duration="13024000" />
       <workItem from="1510415137463" duration="9800000" />
       <workItem from="1514312014469" duration="10953000" />
-      <workItem from="1514441582141" duration="2779000" />
+      <workItem from="1514441582141" duration="4094000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100864000" />
+    <option name="totallyTimeSpent" value="102179000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -416,6 +417,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="17" lean-forward="true" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -578,6 +580,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -693,14 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/storyBoard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="40" column="136" lean-forward="false" selection-start-line="40" selection-start-column="136" selection-end-line="40" selection-end-column="136" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/mapboxImageProcessor.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="656">
@@ -720,23 +715,23 @@
     <entry file="file://$PROJECT_DIR$/bower_components/three.js/three.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
-          <caret line="17753" column="30" lean-forward="true" selection-start-line="17753" selection-start-column="30" selection-end-line="17753" selection-end-column="30" />
+          <caret line="17753" column="30" lean-forward="false" selection-start-line="17753" selection-start-column="30" selection-end-line="17753" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/terrainTile.js">
+    <entry file="file://$PROJECT_DIR$/js/storyBoard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-146">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state relative-caret-position="304">
+          <caret line="19" column="58" lean-forward="false" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="58" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state relative-caret-position="628">
+          <caret line="107" column="40" lean-forward="false" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
           <folding>
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -756,18 +751,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/sceneManager.js">
+    <entry file="file://$PROJECT_DIR$/js/terrainMapPreprocesser.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="214" column="1" lean-forward="true" selection-start-line="214" selection-start-column="1" selection-end-line="214" selection-end-column="1" />
+        <state relative-caret-position="80">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/terrainMapPreprocesser.js">
+    <entry file="file://$PROJECT_DIR$/js/terrainTile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="102" column="91" lean-forward="false" selection-start-line="102" selection-start-column="91" selection-end-line="102" selection-end-column="91" />
+        <state relative-caret-position="324">
+          <caret line="60" column="45" lean-forward="false" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/sceneManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="213" column="5" lean-forward="true" selection-start-line="213" selection-start-column="5" selection-end-line="213" selection-end-column="5" />
           <folding />
         </state>
       </provider>

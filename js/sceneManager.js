@@ -4,7 +4,7 @@ var EnvEnum =
     PROD:1
 };
 
-var globalEnv = EnvEnum.DEBUG;
+var globalEnv = EnvEnum.PROD;
 
 var globalLoaderProgress = 0;
 
@@ -41,6 +41,7 @@ function onWindowResize() {
 }
 
 var terrainSize = 10;
+var singleTileSize = 256;
 
 var locationsToGo =
     [
@@ -256,21 +257,25 @@ function flyToZXY(z,x,y,boundSize)
                 //                 active  : 'Loaded terrain ' + this.gridTileCount / 2 + " / " + loadingGridArray.length
                 //             }
                 //         });
-
-                t.loadzxy(z, loadingGridArray[i].x, loadingGridArray[i].y, containerForTerrains).then(() =>
+                t.loadzxyFromLocalImage(z,x,y,boundSize,containerForTerrains).then(() =>
                 {
-                    // console.log("Done Loading ZXY with Grid Tile Count = " + this.gridTileCount);
-                    // this.gridTileCount++;
-                    // $('#loadingBar')
-                    //     .progress(
-                    //         {
-                    //             percent: this.gridTileCount/loadingGridArray.length * 80 / 2,
-                    //             text: {
-                    //                 active  : 'Loaded terrain ' + this.gridTileCount / 2 + " / " + loadingGridArray.length
-                    //             }
-                    //         });
                     resolve();
-                });
+                }
+                );
+                // t.loadzxy(z, loadingGridArray[i].x, loadingGridArray[i].y, containerForTerrains).then(() =>
+                // {
+                //     // console.log("Done Loading ZXY with Grid Tile Count = " + this.gridTileCount);
+                //     // this.gridTileCount++;
+                //     // $('#loadingBar')
+                //     //     .progress(
+                //     //         {
+                //     //             percent: this.gridTileCount/loadingGridArray.length * 80 / 2,
+                //     //             text: {
+                //     //                 active  : 'Loaded terrain ' + this.gridTileCount / 2 + " / " + loadingGridArray.length
+                //     //             }
+                //     //         });
+                //     resolve();
+                // });
             });
         }
 
