@@ -2,33 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="040f219d-64cd-47a1-8d4c-555a3c55fe8c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/android-icon-144x144.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/android-icon-192x192.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/android-icon-36x36.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/android-icon-48x48.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/android-icon-72x72.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/android-icon-96x96.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/apple-icon-114x114.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/apple-icon-120x120.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/apple-icon-144x144.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/apple-icon-152x152.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/apple-icon-180x180.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/apple-icon-57x57.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/apple-icon-60x60.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/apple-icon-72x72.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/apple-icon-76x76.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/apple-icon-precomposed.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/apple-icon.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/favicon-16x16.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/favicon-32x32.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/favicon-96x96.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/favicon.ico" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change beforePath="$PROJECT_DIR$/js/sceneManager.js" afterPath="$PROJECT_DIR$/js/sceneManager.js" />
-      <change beforePath="$PROJECT_DIR$/ms-icon-144x144.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/ms-icon-150x150.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/ms-icon-310x310.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/ms-icon-70x70.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bower_components/three.js/.bower.json" afterPath="$PROJECT_DIR$/bower_components/three.js/.bower.json" />
+      <change beforePath="$PROJECT_DIR$/bower_components/three.js/README.md" afterPath="$PROJECT_DIR$/bower_components/three.js/README.md" />
+      <change beforePath="$PROJECT_DIR$/bower_components/three.js/bower.json" afterPath="$PROJECT_DIR$/bower_components/three.js/bower.json" />
+      <change beforePath="$PROJECT_DIR$/bower_components/three.js/package.json" afterPath="$PROJECT_DIR$/bower_components/three.js/package.json" />
+      <change beforePath="$PROJECT_DIR$/bower_components/three.js/three.js" afterPath="$PROJECT_DIR$/bower_components/three.js/three.js" />
+      <change beforePath="$PROJECT_DIR$/bower_components/three.js/three.min.js" afterPath="$PROJECT_DIR$/bower_components/three.js/three.min.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -45,8 +24,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+            <state relative-caret-position="288">
+              <caret line="18" column="36" lean-forward="false" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -387,18 +366,17 @@
       <workItem from="1510380659180" duration="13024000" />
       <workItem from="1510415137463" duration="9800000" />
       <workItem from="1514312014469" duration="10953000" />
-      <workItem from="1514441582141" duration="10484000" />
+      <workItem from="1514441582141" duration="10943000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108569000" />
+    <option name="totallyTimeSpent" value="109028000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -768,8 +746,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+        <state relative-caret-position="288">
+          <caret line="18" column="36" lean-forward="false" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
           <folding>
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
