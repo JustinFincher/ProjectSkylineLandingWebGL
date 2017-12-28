@@ -18,6 +18,7 @@ TerrainTile.prototype.loadzxyFromLocalImage = function(z,x,y,boundSize,parent)
                     toBeSavedDisplacementImageName,
                     ( texture )=>
                     {
+                        console.log("Displacement = " + texture);
                         resolve(texture);
                     },
                     ( xhr ) =>
@@ -38,6 +39,7 @@ TerrainTile.prototype.loadzxyFromLocalImage = function(z,x,y,boundSize,parent)
                     toBeSavedColorImageName,
                     ( texture )=>
                     {
+                        console.log("Color = " + texture);
                         resolve(texture);
                     },
                     ( xhr ) =>
@@ -53,13 +55,13 @@ TerrainTile.prototype.loadzxyFromLocalImage = function(z,x,y,boundSize,parent)
             }),
             function (displaceTex,colorTex)
             {
-                this.terrainGeometry = new THREE.PlaneGeometry( terrainSize *  (boundSize * 2 + 1), terrainSize *  (boundSize * 2 + 1), (this.size-1) * (boundSize * 2 + 1),(this.size-1) * (boundSize * 2 + 1) );
+                this.terrainGeometry = new THREE.PlaneGeometry( terrainSize *  (boundSize * 2 + 1), terrainSize *  (boundSize * 2 + 1), (this.singleTileSize-1) * (boundSize * 2 + 1),(this.singleTileSize-1) * (boundSize * 2 + 1) );
                 this.terrainMaterial = new THREE.MeshPhongMaterial(
                     {
                         map: colorTex,
                         bumpMap: displaceTex,
                         displacementMap: displaceTex,
-                        displacementScale: 16,
+                        displacementScale: 3,
                         reflectivity:0.2,
                         shininess:5
                     }
@@ -67,7 +69,7 @@ TerrainTile.prototype.loadzxyFromLocalImage = function(z,x,y,boundSize,parent)
                 this.terrainPlane = new THREE.Mesh( this.terrainGeometry, this.terrainMaterial );
                 parent.add(this.terrainPlane);
                 this.terrainPlane.position.copy(getWorldPosFromZXY(z,x,y));
-                console.log("TerrainTile.prototype.loadzxy done");
+                // console.log("TerrainTile.prototype.loadzxy done");
                 resolve();
             }
         );
