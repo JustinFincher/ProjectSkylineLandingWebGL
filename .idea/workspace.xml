@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="040f219d-64cd-47a1-8d4c-555a3c55fe8c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/bower_components/three.js/.bower.json" afterPath="$PROJECT_DIR$/bower_components/three.js/.bower.json" />
-      <change beforePath="$PROJECT_DIR$/bower_components/three.js/README.md" afterPath="$PROJECT_DIR$/bower_components/three.js/README.md" />
-      <change beforePath="$PROJECT_DIR$/bower_components/three.js/bower.json" afterPath="$PROJECT_DIR$/bower_components/three.js/bower.json" />
-      <change beforePath="$PROJECT_DIR$/bower_components/three.js/package.json" afterPath="$PROJECT_DIR$/bower_components/three.js/package.json" />
-      <change beforePath="$PROJECT_DIR$/bower_components/three.js/three.js" afterPath="$PROJECT_DIR$/bower_components/three.js/three.js" />
-      <change beforePath="$PROJECT_DIR$/bower_components/three.js/three.min.js" afterPath="$PROJECT_DIR$/bower_components/three.js/three.min.js" />
+      <change beforePath="$PROJECT_DIR$/js/sceneManager.js" afterPath="$PROJECT_DIR$/js/sceneManager.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,7 +16,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="288">
@@ -48,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sceneManager.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sceneManager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/sceneManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1008">
-              <caret line="63" column="75" lean-forward="false" selection-start-line="63" selection-start-column="71" selection-end-line="63" selection-end-column="75" />
+            <state relative-caret-position="659">
+              <caret line="209" column="23" lean-forward="true" selection-start-line="209" selection-start-column="23" selection-end-line="209" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -131,8 +126,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>gridTileCount</find>
-      <find>sunLightsunLight</find>
       <find>control</find>
       <find>sunli</find>
       <find>controls</find>
@@ -161,6 +154,8 @@
       <find>all</find>
       <find>terrainGeometry</find>
       <find>join</find>
+      <find>phone</find>
+      <find>initPhone</find>
     </findStrings>
     <replaceStrings>
       <replace>terminal</replace>
@@ -188,8 +183,8 @@
         <option value="$PROJECT_DIR$/js/terrainMapPreprocesser.js" />
         <option value="$PROJECT_DIR$/js/mapboxImageProcessor.js" />
         <option value="$PROJECT_DIR$/js/terrainTile.js" />
-        <option value="$PROJECT_DIR$/js/sceneManager.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/sceneManager.js" />
       </list>
     </option>
   </component>
@@ -366,17 +361,18 @@
       <workItem from="1510380659180" duration="13024000" />
       <workItem from="1510415137463" duration="9800000" />
       <workItem from="1514312014469" duration="10953000" />
-      <workItem from="1514441582141" duration="10943000" />
+      <workItem from="1514441582141" duration="11194000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109028000" />
+    <option name="totallyTimeSpent" value="109279000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -731,14 +727,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/sceneManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1008">
-          <caret line="63" column="75" lean-forward="false" selection-start-line="63" selection-start-column="71" selection-end-line="63" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/img/favicon-96x96.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -766,6 +754,14 @@
             <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/sceneManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="659">
+          <caret line="209" column="23" lean-forward="true" selection-start-line="209" selection-start-column="23" selection-end-line="209" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>

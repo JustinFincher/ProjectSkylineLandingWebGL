@@ -181,6 +181,7 @@ window.onload = function()
                         active  : 'Loading Phone Model'
                     }
                 });
+        console.log("initPhone");
         return initPhone();
     }).then(function ()
     {
@@ -192,6 +193,7 @@ window.onload = function()
                         active  : 'Loading Environment'
                     }
                 });
+        console.log("initENV");
         return initENV();
     }).then(function ()
     {
@@ -203,6 +205,8 @@ window.onload = function()
                         active  : 'Done'
                     }
                 });
+
+        console.log("engineUpdate");
         engineUpdate();
         $( "#loading" ).fadeOut();
         playSequence();
@@ -435,7 +439,6 @@ function initPhone()
                     {
                         phone = object;
                         console.log('phone');
-                        phoneScene.add( phone );
 
                         //必要的材质 -。- C4D => THREE
                         //三星 Logo
@@ -449,6 +452,9 @@ function initPhone()
                         phone.children[0].material.find(x => x.name == 'flash').map = this.phoneFlashTex;
                         phone.children[0].material.find(x => x.name == 'default').color = new THREE.Color(0,0,0);
 
+
+                        phoneScene.add( phone );
+
                         resolve();
                     },
                     // called when loading is in progresses
@@ -457,7 +463,7 @@ function initPhone()
                     },
                     // called when loading has errors
                     function ( error ) {
-                        console.log( 'An error happened' );
+                        console.error( 'An error happened' );
                         reject();
                     }
                 );
