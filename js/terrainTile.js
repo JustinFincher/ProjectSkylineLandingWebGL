@@ -57,8 +57,9 @@ TerrainTile.prototype.loadzxyFromLocalImage = function(z,x,y,boundSize,parent)
                 this.terrainMaterial = new THREE.MeshPhongMaterial(
                     {
                         map: colorTex,
+                        bumpMap: displaceTex,
                         displacementMap: displaceTex,
-                        displacementScale: 10,
+                        displacementScale: 16,
                         reflectivity:0.2,
                         shininess:5
                     }
