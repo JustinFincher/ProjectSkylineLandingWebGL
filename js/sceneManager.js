@@ -10,20 +10,11 @@ var useRetinaMap = true;
 
 var globalLoaderProgress = 0;
 
-var isMobileDevice = (
-    bowser.osname === 'ios' ||
-    bowser.osname ==='android' ||
-    bowser.osname ==='webos' ||
-    bowser.osname ==='windowsphone' ||
-    bowser.osname ==='sailfish' ||
-    bowser.osname ==='iphone' ||
-    bowser.osname ==='iphone' ||
-    bowser.osname ==='ipad' ||
-    bowser.osname ==='ipod' ||
-    bowser.osname ==='blackberry' ||
-    bowser.osname ==='bada' ||
-    bowser.osname ==='tizen'
-);
+var md = new MobileDetect(window.navigator.userAgent);
+console.log(md.mobile());
+console.log(md.mobileGrade());
+console.log(md.os());
+var isMobileDevice = (md.mobile() !== null);
 
 
 THREE.DefaultLoadingManager.onStart = function ( url, itemsLoaded, itemsTotal )
