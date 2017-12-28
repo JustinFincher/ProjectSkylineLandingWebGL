@@ -62,8 +62,9 @@ TerrainTile.prototype.loadzxyFromLocalImage = function(z,x,y,boundSize,parent)
                     console.log("colorTex = ");
                     console.log(colorTex);
 
-                    console.log("THREE.PlaneGeometry(" + terrainSize *  (boundSize * 2 + 1) + ", " + terrainSize *  (boundSize * 2 + 1) + ", 512, 512)");
-                    this.terrainGeometry = new THREE.PlaneGeometry( terrainSize *  (boundSize * 2 + 1), terrainSize *  (boundSize * 2 + 1),512,512 );
+                    var meshSubDivideCount = isMobileDevice ? 128 : 512;
+                    console.log("THREE.PlaneGeometry(" + terrainSize *  (boundSize * 2 + 1) + ", " + terrainSize *  (boundSize * 2 + 1) + "," + meshSubDivideCount +", " +  meshSubDivideCount + ")");
+                    this.terrainGeometry = new THREE.PlaneGeometry( terrainSize *  (boundSize * 2 + 1), terrainSize *  (boundSize * 2 + 1),meshSubDivideCount,meshSubDivideCount );
                     // console.log("THREE.PlaneGeometry(" + terrainSize *  (boundSize * 2 + 1) + ", " + terrainSize *  (boundSize * 2 + 1) + ", " +(this.singleTileSize * (boundSize * 2 + 1) - 1) + ", " + (this.singleTileSize * (boundSize * 2 + 1) - 1) + ")");
                     // this.terrainGeometry = new THREE.PlaneGeometry( terrainSize *  (boundSize * 2 + 1), terrainSize *  (boundSize * 2 + 1),(this.singleTileSize * (boundSize * 2 + 1) - 1),(this.singleTileSize * (boundSize * 2 + 1) - 1) );
                     console.log("terrainGeometry = ");

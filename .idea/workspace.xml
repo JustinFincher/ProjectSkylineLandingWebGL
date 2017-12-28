@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="040f219d-64cd-47a1-8d4c-555a3c55fe8c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/js/sceneManager.js" afterPath="$PROJECT_DIR$/js/sceneManager.js" />
       <change beforePath="$PROJECT_DIR$/js/terrainTile.js" afterPath="$PROJECT_DIR$/js/terrainTile.js" />
-      <change beforePath="$PROJECT_DIR$/tex/10-308-480-1-c.jpeg" afterPath="$PROJECT_DIR$/tex/10-308-480-1-c.jpeg" />
-      <change beforePath="$PROJECT_DIR$/tex/10-308-480-1-d.jpeg" afterPath="$PROJECT_DIR$/tex/10-308-480-1-d.jpeg" />
-      <change beforePath="$PROJECT_DIR$/tex/10-791-431-1-c.jpeg" afterPath="$PROJECT_DIR$/tex/10-791-431-1-c.jpeg" />
-      <change beforePath="$PROJECT_DIR$/tex/10-791-431-1-d.jpeg" afterPath="$PROJECT_DIR$/tex/10-791-431-1-d.jpeg" />
-      <change beforePath="$PROJECT_DIR$/tex/10-836-447-1-c.jpeg" afterPath="$PROJECT_DIR$/tex/10-836-447-1-c.jpeg" />
-      <change beforePath="$PROJECT_DIR$/tex/10-836-447-1-d.jpeg" afterPath="$PROJECT_DIR$/tex/10-836-447-1-d.jpeg" />
-      <change beforePath="$PROJECT_DIR$/tex/11-1253-750-1-c.jpeg" afterPath="$PROJECT_DIR$/tex/11-1253-750-1-c.jpeg" />
-      <change beforePath="$PROJECT_DIR$/tex/11-1253-750-1-d.jpeg" afterPath="$PROJECT_DIR$/tex/11-1253-750-1-d.jpeg" />
-      <change beforePath="$PROJECT_DIR$/tex/14-14155-9385-1-c.jpeg" afterPath="$PROJECT_DIR$/tex/14-14155-9385-1-c.jpeg" />
-      <change beforePath="$PROJECT_DIR$/tex/14-14155-9385-1-d.jpeg" afterPath="$PROJECT_DIR$/tex/14-14155-9385-1-d.jpeg" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -55,8 +44,8 @@
       <file leaf-file-name="sceneManager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/sceneManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="52" column="12" lean-forward="false" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
+            <state relative-caret-position="288">
+              <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -65,8 +54,8 @@
       <file leaf-file-name="terrainTile.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/terrainTile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="683">
-              <caret line="88" column="53" lean-forward="false" selection-start-line="88" selection-start-column="53" selection-end-line="88" selection-end-column="53" />
+            <state relative-caret-position="249">
+              <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -370,12 +359,12 @@
       <workItem from="1510380659180" duration="13024000" />
       <workItem from="1510415137463" duration="9800000" />
       <workItem from="1514312014469" duration="10953000" />
-      <workItem from="1514441582141" duration="8666000" />
+      <workItem from="1514441582141" duration="9316000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106751000" />
+    <option name="totallyTimeSpent" value="107401000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -733,14 +722,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/terrainTile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="683">
-          <caret line="88" column="53" lean-forward="false" selection-start-line="88" selection-start-column="53" selection-end-line="88" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
@@ -763,10 +744,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/terrainTile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/sceneManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="52" column="12" lean-forward="false" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
+        <state relative-caret-position="288">
+          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
           <folding />
         </state>
       </provider>

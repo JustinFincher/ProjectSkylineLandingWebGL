@@ -10,6 +10,22 @@ var useRetinaMap = true;
 
 var globalLoaderProgress = 0;
 
+var isMobileDevice = (
+    bowser.osname === 'ios' ||
+    bowser.osname ==='android' ||
+    bowser.osname ==='webos' ||
+    bowser.osname ==='windowsphone' ||
+    bowser.osname ==='sailfish' ||
+    bowser.osname ==='iphone' ||
+    bowser.osname ==='iphone' ||
+    bowser.osname ==='ipad' ||
+    bowser.osname ==='ipod' ||
+    bowser.osname ==='blackberry' ||
+    bowser.osname ==='bada' ||
+    bowser.osname ==='tizen'
+);
+
+
 THREE.DefaultLoadingManager.onStart = function ( url, itemsLoaded, itemsTotal )
 {
     // console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
@@ -44,6 +60,8 @@ function onWindowResize() {
 
 var terrainSize = 10;
 var singleTileSize = useRetinaMap ? 512 : 256;
+
+var renderTarget = new THREE.WebGLRenderTarget( isMobileDevice ? 512 : 1024, isMobileDevice ? 1024 : 2048, { format: THREE.RGBFormat, minFilter: THREE.LinearFilter, magFilter: THREE.NearestFilter} );
 
 var locationsToGo =
     [
@@ -86,14 +104,6 @@ var sunEffectParameter = new Proxy(sunEffectValue, {
 });
 var controls;
 var phone;
-
-if (bowser.osname == 'ios' || bowser.osname =='android')
-{
-    var renderTarget = new THREE.WebGLRenderTarget( 512, 1024, { format: THREE.RGBFormat, minFilter: THREE.LinearFilter, magFilter: THREE.NearestFilter} );
-}else
-{
-    var renderTarget = new THREE.WebGLRenderTarget( 1024, 2048, { format: THREE.RGBFormat, minFilter: THREE.LinearFilter, magFilter: THREE.NearestFilter} );
-}
 
 var hidden, state, visibilityChange;
 if (typeof document.hidden !== "undefined") {
