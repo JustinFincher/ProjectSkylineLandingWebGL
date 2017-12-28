@@ -366,14 +366,14 @@ function initPhone()
                 },
                 // Function called when download progresses
                 function ( xhr ) {
-                    $('#loadingBar')
-                        .progress(
-                            {
-                                percent: 80 + (xhr.loaded / xhr.total * 10),
-                                text: {
-                                    active  : 'Loading Phone Model '  +  (xhr.loaded / xhr.total * 100) + " %"
-                                }
-                            });
+                    // $('#loadingBar')
+                    //     .progress(
+                    //         {
+                    //             percent: 80 + (xhr.loaded / xhr.total * 10),
+                    //             text: {
+                    //                 active  : 'Loading Phone Model '  +  (xhr.loaded / xhr.total * 100) + " %"
+                    //             }
+                    //         });
                     console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
                 },
                 // Function called when download errors

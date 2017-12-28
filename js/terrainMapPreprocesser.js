@@ -2,12 +2,18 @@ function downloadZXY(z,x,y,boundSize)
 {
     return new Promise( (resolve, reject) =>
     {
+        var combineDisplaceAndColor = false;
 
         var singleTileSize = 256;
-        var toBeSavedCanvas = document.createElement('canvas');
-        toBeSavedCanvas.width = (boundSize * 2 + 1) * singleTileSize;
-        toBeSavedCanvas.height = (boundSize * 2 + 1) * singleTileSize;
-        var toBeSavedCanvasContext = toBeSavedCanvas.getContext('2d');
+        var toBeSavedDisplacementCanvas = document.createElement('canvas');
+        toBeSavedDisplacementCanvas.width = (boundSize * 2 + 1) * singleTileSize;
+        toBeSavedDisplacementCanvas.height = (boundSize * 2 + 1) * singleTileSize;
+        var toBeSavedDisplacementCanvasContext = toBeSavedDisplacementCanvas.getContext('2d');
+
+        var toBeSavedColorCanvas = document.createElement('canvas');
+        toBeSavedColorCanvas.width = (boundSize * 2 + 1) * singleTileSize;
+        toBeSavedColorCanvas.height = (boundSize * 2 + 1) * singleTileSize;
+        var toBeSavedColorCanvasContext = toBeSavedColorCanvas.getContext('2d');
 
         var preLoadingGridArray = [];
 
@@ -43,15 +49,14 @@ function downloadZXY(z,x,y,boundSize)
                 Promise.join(asyncHeightImage(z, preLoadingGridArray[index].x, preLoadingGridArray[index].y), asyncColorImage(z, preLoadingGridArray[index].x, preLoadingGridArray[index].y),
                     function(heightImage, colorImage)
                     {
-
-                        return  Promise.join(imageToCanvasContext(heightImage),imageToCanvasContext(colorImage),
+                        return Promise.join(imageToCanvasContext(heightImage),imageToCanvasContext(colorImage),
                             function(heightCanvasContext,colorCanvasContext)
                             {
                                 return new Promise((resolve,reject) =>
                                 {
                                     console.log("index = " + index);
-                                    var hieghtImgd = heightCanvasContext.getImageData(0, 0, singleTileSize,singleTileSize);
-                                    var heightData = hieghtImgd.data;
+                                    var heightImgd = heightCanvasContext.getImageData(0, 0, singleTileSize,singleTileSize);
+                                    var heightData = heightImgd.data;
 
                                     var colorImgd = colorCanvasContext.getImageData(0, 0, singleTileSize,singleTileSize);
                                     var colorData = colorImgd.data;
@@ -59,43 +64,47 @@ function downloadZXY(z,x,y,boundSize)
                                     for (var pixelIndex = 0, n = heightData.length / 4; pixelIndex < n; pixelIndex += 1)
                                     {
                                         var height = ((heightData[pixelIndex * 4] * 256 * 256 + heightData[pixelIndex * 4 +1] * 256 + heightData[pixelIndex * 4 + 2]) / (256*256/128) - 196) * (256/(256-196));
-                                        heightData[pixelIndex * 4] = colorData[pixelIndex * 4];
-                                        heightData[pixelIndex * 4+1] = colorData[pixelIndex * 4+1];
-                                        heightData[pixelIndex * 4+2] = colorData[pixelIndex * 4+2];
-                                        heightData[pixelIndex * 4+3] = height;
+
+                                        heightData[pixelIndex * 4] = height;
+                                        heightData[pixelIndex * 4+1] = height;
+                                        heightData[pixelIndex * 4+2] = height;
                                     }
+                                    heightCanvasContext.putImageData(heightImgd, 0,0);
 
-                                    heightCanvasContext.putImageData(hieghtImgd, 0,0);
+                                    console.log(heightData);
+                                    console.log(colorData);
 
-                                    console.log(hieghtImgd.data);
-                                    resolve(heightCanvasContext);
+                                    console.log("toBeSavedDisplacementCanvasContext.drawImage(heightCanvasContext.canvas," + preLoadingGridArray[index].indexX * singleTileSize +", " + preLoadingGridArray[index].indexY * singleTileSize + ")");
+                                    console.log("toBeSavedColorCanvasContext.drawImage(colorCanvasContext.canvas," + preLoadingGridArray[index].indexX * singleTileSize +", " + preLoadingGridArray[index].indexY * singleTileSize + ")");
+
+                                    toBeSavedDisplacementCanvasContext.drawImage(heightCanvasContext.canvas, preLoadingGridArray[index].indexX * singleTileSize, preLoadingGridArray[index].indexY * singleTileSize);
+                                    toBeSavedColorCanvasContext.drawImage(colorCanvasContext.canvas, preLoadingGridArray[index].indexX * singleTileSize, preLoadingGridArray[index].indexY * singleTileSize);
+
+                                    resolve();
                                 });
-                            });
-                    })
-                    .then((canvasContext) =>
-                {
-                    console.log(preLoadingGridArray);
-                    console.log(preLoadingIndex);
-                    console.log(preLoadingGridArray[preLoadingIndex]);
-                    console.log("toBeSavedCanvasContext.drawImage(canvasContext.canvas," + preLoadingGridArray[index].indexX * singleTileSize +", " + preLoadingGridArray[index].indexY * singleTileSize + ")");
-
-                    toBeSavedCanvasContext.drawImage(canvasContext.canvas, preLoadingGridArray[index].indexX * singleTileSize, preLoadingGridArray[index].indexY * singleTileSize);
-
-                    resolve();
-                });
+                            }).then(() =>
+                        {
+                            console.log("drawImage tile done");
+                            resolve();
+                        });
+                    });
             });
         }
 
         Promise.all(preLoadingGridPromiseArray).then( () =>
         {
             console.log(z);
-            var pngUrl = toBeSavedCanvasContext.canvas.toDataURL("image/png");
-            console.log("Height Map");
-            console.log(pngUrl);
+            var displacementURL = toBeSavedDisplacementCanvasContext.canvas.toDataURL("image/jpeg");
+            var colorURL = toBeSavedColorCanvasContext.canvas.toDataURL("image/jpeg");
+            console.log(displacementURL);
+            console.log(colorURL);
 
-            var toBeSavedImageName = z + "-" + x + "-" + y + "-" + boundSize +"-height.png";
-            console.log(toBeSavedImageName);
-            saveAs(dataURItoBlob(pngUrl), toBeSavedImageName);
+            var toBeSavedDisplacementImageName = z + "-" + x + "-" + y + "-" + boundSize +"-d.jpeg";
+            var toBeSavedColorImageName = z + "-" + x + "-" + y + "-" + boundSize +"-c.jpeg";
+            console.log(toBeSavedDisplacementImageName);
+            console.log(toBeSavedColorImageName);
+            saveAs(dataURItoBlob(displacementURL), toBeSavedDisplacementImageName);
+            saveAs(dataURItoBlob(colorURL), toBeSavedColorImageName);
 
             resolve();
         });

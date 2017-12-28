@@ -2,6 +2,15 @@
 function TerrainTile()
 {}
 
+TerrainTile.prototype.loadzxyFromLocalImage = function(z,x,y,parent)
+{
+    return new Promise((resolve, reject) =>
+    {
+        var toBeSavedImageName = z + "-" + x + "-" + y + "-" + boundSize +".png";
+
+    });
+}
+
 TerrainTile.prototype.loadzxy = function (z,x,y,parent)
 {
     return new Promise((resolve, reject) =>
