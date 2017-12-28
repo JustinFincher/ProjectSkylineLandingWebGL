@@ -61,7 +61,7 @@ function onWindowResize() {
 var terrainSize = 10;
 var singleTileSize = useRetinaMap ? 512 : 256;
 
-var renderTarget = new THREE.WebGLRenderTarget( isMobileDevice ? 512 : 1024, isMobileDevice ? 1024 : 2048, { format: THREE.RGBFormat, minFilter: THREE.LinearFilter, magFilter: THREE.NearestFilter} );
+var renderTarget = new THREE.WebGLRenderTarget( isMobileDevice ? 256 : 1024, isMobileDevice ? 512 : 2048, { format: THREE.RGBFormat, minFilter: THREE.LinearFilter, magFilter: THREE.NearestFilter} );
 
 var locationsToGo =
     [

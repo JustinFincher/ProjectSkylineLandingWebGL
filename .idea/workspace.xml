@@ -2,7 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="040f219d-64cd-47a1-8d4c-555a3c55fe8c" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/android-icon-144x144.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/android-icon-192x192.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/android-icon-36x36.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/android-icon-48x48.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/android-icon-72x72.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/android-icon-96x96.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apple-icon-114x114.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apple-icon-120x120.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apple-icon-144x144.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apple-icon-152x152.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apple-icon-180x180.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apple-icon-57x57.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apple-icon-60x60.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apple-icon-72x72.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apple-icon-76x76.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apple-icon-precomposed.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/apple-icon.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/favicon-16x16.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/favicon-32x32.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/favicon-96x96.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/favicon.ico" afterPath="" />
       <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change beforePath="$PROJECT_DIR$/js/sceneManager.js" afterPath="$PROJECT_DIR$/js/sceneManager.js" />
+      <change beforePath="$PROJECT_DIR$/ms-icon-144x144.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ms-icon-150x150.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ms-icon-310x310.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ms-icon-70x70.png" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,8 +45,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="39" column="67" lean-forward="false" selection-start-line="39" selection-start-column="67" selection-end-line="39" selection-end-column="67" />
+            <state relative-caret-position="496">
+              <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -46,8 +72,8 @@
       <file leaf-file-name="sceneManager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/sceneManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="18" column="32" lean-forward="false" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+            <state relative-caret-position="1008">
+              <caret line="63" column="75" lean-forward="false" selection-start-line="63" selection-start-column="71" selection-end-line="63" selection-end-column="75" />
               <folding />
             </state>
           </provider>
@@ -361,12 +387,12 @@
       <workItem from="1510380659180" duration="13024000" />
       <workItem from="1510415137463" duration="9800000" />
       <workItem from="1514312014469" duration="10953000" />
-      <workItem from="1514441582141" duration="10134000" />
+      <workItem from="1514441582141" duration="10484000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108219000" />
+    <option name="totallyTimeSpent" value="108569000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -402,14 +428,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/terrainWorker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="17" lean-forward="true" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/storyBoard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -737,16 +755,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/sceneManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="18" column="32" lean-forward="false" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+        <state relative-caret-position="1008">
+          <caret line="63" column="75" lean-forward="false" selection-start-line="63" selection-start-column="71" selection-end-line="63" selection-end-column="75" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/img/favicon-96x96.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="39" column="67" lean-forward="false" selection-start-line="39" selection-start-column="67" selection-end-line="39" selection-end-column="67" />
+        <state relative-caret-position="496">
+          <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
           <folding>
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
