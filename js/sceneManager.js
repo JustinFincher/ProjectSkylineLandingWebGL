@@ -53,8 +53,7 @@ var locationsToGo =
         {lon:131.0366,lat:-25.3454,zoom:14},
         {lon:114.1802,lat:22.2572,zoom:10},
         {lon:-7.7748,lat:31.1323,zoom:10},
-        {lon:40.2548,lat:43.3103,zoom:11},
-        {lon:-71.4981,lat:10.8865,zoom:10}
+        {lon:40.2548,lat:43.3103,zoom:11}
     ]
 
 var terrainScene = new THREE.Scene();
@@ -154,9 +153,9 @@ window.onload = function()
     $('#loadingBar')
         .progress(
             {
-                percent: 0,
+                percent: 10,
                 text: {
-                    active  : 'Loading'
+                    active  : 'Loading terrains'
                 }
             });
 
@@ -220,15 +219,6 @@ function flyToZXY(z,x,y,boundSize)
 {
     return new Promise( (resolve, reject) =>
     {
-        $('#loadingBar')
-            .progress(
-                {
-                    percent: 10,
-                    text: {
-                        active  : 'Loading terrains'
-                    }
-                });
-
         containerForTerrains.position.copy(new THREE.Vector3(-x * terrainSize, y * terrainSize, 0));
 
         // var loadingGridArray = [];
@@ -283,6 +273,7 @@ function flyToZXY(z,x,y,boundSize)
         var t = new TerrainTile();
         t.loadzxyFromLocalImage(z,x,y,boundSize,containerForTerrains).then(() =>
             {
+                console.log("loadzxyFromLocalImage done");
                 containerPivot = new THREE.Object3D();
                 containerPivot.position=new THREE.Vector3(0,0,0);
                 containerPivot.add(containerForTerrains);

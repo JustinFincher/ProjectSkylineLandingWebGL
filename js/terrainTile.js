@@ -9,7 +9,6 @@ TerrainTile.prototype.loadzxyFromLocalImage = function(z,x,y,boundSize,parent)
         var toBeSavedDisplacementImageName = "tex/" + z + "-" + x + "-" + y + "-" + boundSize +"-d.jpeg";
         var toBeSavedColorImageName = "tex/" + z + "-" + x + "-" + y + "-" + boundSize +"-c.jpeg";
 
-
         return Promise.join(
             new Promise((resolve,reject) =>
             {
@@ -55,24 +54,47 @@ TerrainTile.prototype.loadzxyFromLocalImage = function(z,x,y,boundSize,parent)
             }),
             function (displaceTex,colorTex)
             {
-                this.terrainGeometry = new THREE.PlaneGeometry( terrainSize *  (boundSize * 2 + 1), terrainSize *  (boundSize * 2 + 1), (this.singleTileSize-1) * (boundSize * 2 + 1),(this.singleTileSize-1) * (boundSize * 2 + 1) );
-                this.terrainMaterial = new THREE.MeshPhongMaterial(
-                    {
-                        map: colorTex,
-                        bumpMap: displaceTex,
-                        displacementMap: displaceTex,
-                        displacementScale: 3,
-                        reflectivity:0.2,
-                        shininess:5
-                    }
-                );
-                this.terrainPlane = new THREE.Mesh( this.terrainGeometry, this.terrainMaterial );
-                parent.add(this.terrainPlane);
-                this.terrainPlane.position.copy(getWorldPosFromZXY(z,x,y));
-                // console.log("TerrainTile.prototype.loadzxy done");
-                resolve();
+                return new Promise((resolve,reject) =>
+                {
+                    console.log("displaceTex = ");
+                    console.log(displaceTex);
+
+                    console.log("colorTex = ");
+                    console.log(colorTex);
+
+                    console.log("THREE.PlaneGeometry(" + terrainSize *  (boundSize * 2 + 1) + ", " + terrainSize *  (boundSize * 2 + 1) + ", 512, 512)");
+                    this.terrainGeometry = new THREE.PlaneGeometry( terrainSize *  (boundSize * 2 + 1), terrainSize *  (boundSize * 2 + 1),512,512 );
+                    // console.log("THREE.PlaneGeometry(" + terrainSize *  (boundSize * 2 + 1) + ", " + terrainSize *  (boundSize * 2 + 1) + ", " +(this.singleTileSize * (boundSize * 2 + 1) - 1) + ", " + (this.singleTileSize * (boundSize * 2 + 1) - 1) + ")");
+                    // this.terrainGeometry = new THREE.PlaneGeometry( terrainSize *  (boundSize * 2 + 1), terrainSize *  (boundSize * 2 + 1),(this.singleTileSize * (boundSize * 2 + 1) - 1),(this.singleTileSize * (boundSize * 2 + 1) - 1) );
+                    console.log("terrainGeometry = ");
+                    console.log(this.terrainGeometry);
+                    this.terrainMaterial = new THREE.MeshPhongMaterial(
+                        {
+                            map: colorTex,
+                            bumpMap: displaceTex,
+                            displacementMap: displaceTex,
+                            displacementScale: 3,
+                            reflectivity:0.2,
+                            shininess:5
+                        }
+                    );
+                    console.log("terrainMaterial = ");
+                    console.log(this.terrainMaterial);
+                    this.terrainPlane = new THREE.Mesh( this.terrainGeometry, this.terrainMaterial );
+                    console.log("terrainPlane = ");
+                    console.log(this.terrainPlane);
+
+                    parent.add(this.terrainPlane);
+                    this.terrainPlane.position.copy(getWorldPosFromZXY(z,x,y));
+                    console.log( this.terrainPlane );
+                    resolve(this.terrainPlane);
+                });
             }
-        );
+        ).then((plane) =>
+        {
+            console.log(plane);
+            resolve();
+        });
     });
 }
 
