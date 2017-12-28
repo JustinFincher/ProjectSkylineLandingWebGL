@@ -2,6 +2,80 @@
 function TerrainTile()
 {}
 
+TerrainTile.prototype.loadzxyFromLocalImage = function(z,x,y,boundSize,parent)
+{
+    return new Promise((resolve, reject) =>
+    {
+        var toBeSavedDisplacementImageName = "tex/" + z + "-" + x + "-" + y + "-" + boundSize +"-d.jpeg";
+        var toBeSavedColorImageName = "tex/" + z + "-" + x + "-" + y + "-" + boundSize +"-c.jpeg";
+
+
+        return Promise.join(
+            new Promise((resolve,reject) =>
+            {
+                new THREE.TextureLoader().load
+                (
+                    toBeSavedDisplacementImageName,
+                    ( texture )=>
+                    {
+                        console.log("Displacement = " + texture);
+                        resolve(texture);
+                    },
+                    ( xhr ) =>
+                    {
+                        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+                    },
+                    function ( err )
+                    {
+                        console.error( 'An error happened' );
+                        reject();
+                    }
+                );
+            }),
+            new Promise((resolve,reject) =>
+            {
+                new THREE.TextureLoader().load
+                (
+                    toBeSavedColorImageName,
+                    ( texture )=>
+                    {
+                        console.log("Color = " + texture);
+                        resolve(texture);
+                    },
+                    ( xhr ) =>
+                    {
+                        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+                    },
+                    function ( err )
+                    {
+                        console.error( 'An error happened' );
+                        reject();
+                    }
+                );
+            }),
+            function (displaceTex,colorTex)
+            {
+                this.terrainGeometry = new THREE.PlaneGeometry( terrainSize *  (boundSize * 2 + 1), terrainSize *  (boundSize * 2 + 1), (this.singleTileSize-1) * (boundSize * 2 + 1),(this.singleTileSize-1) * (boundSize * 2 + 1) );
+                this.terrainMaterial = new THREE.MeshPhongMaterial(
+                    {
+                        map: colorTex,
+                        bumpMap: displaceTex,
+                        displacementMap: displaceTex,
+                        displacementScale: 3,
+                        reflectivity:0.2,
+                        shininess:5
+                    }
+                );
+                this.terrainPlane = new THREE.Mesh( this.terrainGeometry, this.terrainMaterial );
+                parent.add(this.terrainPlane);
+                this.terrainPlane.position.copy(getWorldPosFromZXY(z,x,y));
+                // console.log("TerrainTile.prototype.loadzxy done");
+                resolve();
+            }
+        );
+    });
+}
+
 TerrainTile.prototype.loadzxy = function (z,x,y,parent)
 {
     return new Promise((resolve, reject) =>

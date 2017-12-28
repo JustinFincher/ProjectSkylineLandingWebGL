@@ -1,3 +1,13 @@
+var EnvEnum =
+    {
+    DEBUG:0,
+    PROD:1
+};
+
+var globalEnv = (location.search.split('debug=')[1] === "1") ? EnvEnum.DEBUG : EnvEnum.PROD;
+
+var useRetinaMap = true;
+
 var globalLoaderProgress = 0;
 
 THREE.DefaultLoadingManager.onStart = function ( url, itemsLoaded, itemsTotal )
@@ -33,6 +43,7 @@ function onWindowResize() {
 }
 
 var terrainSize = 10;
+var singleTileSize = useRetinaMap ? 512 : 256;
 
 var locationsToGo =
     [
@@ -193,10 +204,16 @@ window.onload = function()
 
 function flyToCoordinate(lon,lat,zoom,boundSize)
 {
+
     var tilex = long2tile(lon,zoom);
     var tiley = lat2tile(lat,zoom);
 
     console.log(tilex,tiley);
+
+    if (globalEnv === EnvEnum.DEBUG)
+    {
+        downloadZXY(zoom,tilex,tiley,boundSize);
+    }
     return flyToZXY(zoom,tilex,tiley,boundSize);
 }
 function flyToZXY(z,x,y,boundSize)
@@ -214,64 +231,79 @@ function flyToZXY(z,x,y,boundSize)
 
         containerForTerrains.position.copy(new THREE.Vector3(-x * terrainSize, y * terrainSize, 0));
 
-        var loadingGridArray = [];
-
-        for (var i = x - boundSize; i <= x + boundSize; i++) {
-            for (var k = y - boundSize; k <= y + boundSize; k++)
+        // var loadingGridArray = [];
+        //
+        // for (var i = x - boundSize; i <= x + boundSize; i++) {
+        //     for (var k = y - boundSize; k <= y + boundSize; k++)
+        //     {
+        //         console.log(i,k);
+        //         console.log(i - x + boundSize, k - y + boundSize);
+        //         loadingGridArray[(i - x + boundSize) * (1+ boundSize * 2) + (k - y + boundSize)] = {'x':i,'y':k};
+        //     }
+        // }
+        // console.log(loadingGridArray);
+        // this.gridTileCount = 0;
+        // var loadingGridPromiseArray = [];
+        // for (var i = 0; i < loadingGridArray.length; i++)
+        // {
+        //     loadingGridPromiseArray[i] = new Promise((resolve, reject) =>
+        //     {
+        //         this.gridTileCount++;
+        //         console.log("Doing Loading ZXY with Grid Tile Count = " + this.gridTileCount);
+        //         var t = new TerrainTile();
+        //         // $('#loadingBar')
+        //         //     .progress(
+        //         //         {
+        //         //             percent: this.gridTileCount/loadingGridArray.length * 80 / 2,
+        //         //             text: {
+        //         //                 active  : 'Loaded terrain ' + this.gridTileCount / 2 + " / " + loadingGridArray.length
+        //         //             }
+        //         //         });
+        //         t.loadzxyFromLocalImage(z,x,y,boundSize,containerForTerrains).then(() =>
+        //         {
+        //             resolve();
+        //         }
+        //         );
+        //         // t.loadzxy(z, loadingGridArray[i].x, loadingGridArray[i].y, containerForTerrains).then(() =>
+        //         // {
+        //         //     // console.log("Done Loading ZXY with Grid Tile Count = " + this.gridTileCount);
+        //         //     // this.gridTileCount++;
+        //         //     // $('#loadingBar')
+        //         //     //     .progress(
+        //         //     //         {
+        //         //     //             percent: this.gridTileCount/loadingGridArray.length * 80 / 2,
+        //         //     //             text: {
+        //         //     //                 active  : 'Loaded terrain ' + this.gridTileCount / 2 + " / " + loadingGridArray.length
+        //         //     //             }
+        //         //     //         });
+        //         //     resolve();
+        //         // });
+        //     });
+        // }
+        var t = new TerrainTile();
+        t.loadzxyFromLocalImage(z,x,y,boundSize,containerForTerrains).then(() =>
             {
-                console.log(i,k);
-                console.log(i - x + boundSize, k - y + boundSize);
-                loadingGridArray[(i - x + boundSize) * (1+ boundSize * 2) + (k - y + boundSize)] = {'x':i,'y':k};
+                containerPivot = new THREE.Object3D();
+                containerPivot.position=new THREE.Vector3(0,0,0);
+                containerPivot.add(containerForTerrains);
+                terrainScene.add(containerPivot);
+                containerPivot.rotation.x = - Math.PI / 2;
+                resolve();
             }
-        }
-        console.log(loadingGridArray);
-        this.gridTileCount = 0;
-        var loadingGridPromiseArray = [];
-        for (var i = 0; i < loadingGridArray.length; i++)
-        {
-            loadingGridPromiseArray[i] = new Promise((resolve, reject) =>
-            {
-                this.gridTileCount++;
-                console.log("Doing Loading ZXY with Grid Tile Count = " + this.gridTileCount);
-                var t = new TerrainTile();
-                $('#loadingBar')
-                    .progress(
-                        {
-                            percent: this.gridTileCount/loadingGridArray.length * 80 / 2,
-                            text: {
-                                active  : 'Loaded terrain ' + this.gridTileCount / 2 + " / " + loadingGridArray.length
-                            }
-                        });
-
-                t.loadzxy(z, loadingGridArray[i].x, loadingGridArray[i].y, containerForTerrains).then(() =>
-                {
-                    console.log("Done Loading ZXY with Grid Tile Count = " + this.gridTileCount);
-                    this.gridTileCount++;
-                    $('#loadingBar')
-                        .progress(
-                            {
-                                percent: this.gridTileCount/loadingGridArray.length * 80 / 2,
-                                text: {
-                                    active  : 'Loaded terrain ' + this.gridTileCount / 2 + " / " + loadingGridArray.length
-                                }
-                            });
-                    resolve();
-                });
-            });
-        }
-
-        var gridTileCount = 0;
-        Promise.all(loadingGridPromiseArray).then( () =>
-        {
-            console.log("Loading Terrain Grid Done");
-            containerPivot = new THREE.Object3D();
-            containerPivot.position=new THREE.Vector3(0,0,0);
-            containerPivot.add(containerForTerrains);
-            terrainScene.add(containerPivot);
-            containerPivot.rotation.x = - Math.PI / 2;
-
-            resolve();
-        });
+        );
+        //
+        // // var gridTileCount = 0;
+        // Promise.all(loadingGridPromiseArray).then( () =>
+        // {
+        //     console.log("Loading Terrain Grid Done");
+        //     containerPivot = new THREE.Object3D();
+        //     containerPivot.position=new THREE.Vector3(0,0,0);
+        //     containerPivot.add(containerForTerrains);
+        //     terrainScene.add(containerPivot);
+        //     containerPivot.rotation.x = - Math.PI / 2;
+        //
+        //     resolve();
+        // });
     });
 }
 
@@ -352,14 +384,14 @@ function initPhone()
                 },
                 // Function called when download progresses
                 function ( xhr ) {
-                    $('#loadingBar')
-                        .progress(
-                            {
-                                percent: 80 + (xhr.loaded / xhr.total * 10),
-                                text: {
-                                    active  : 'Loading Phone Model '  +  (xhr.loaded / xhr.total * 100) + " %"
-                                }
-                            });
+                    // $('#loadingBar')
+                    //     .progress(
+                    //         {
+                    //             percent: 80 + (xhr.loaded / xhr.total * 10),
+                    //             text: {
+                    //                 active  : 'Loading Phone Model '  +  (xhr.loaded / xhr.total * 100) + " %"
+                    //             }
+                    //         });
                     console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
                 },
                 // Function called when download errors

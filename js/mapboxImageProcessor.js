@@ -18,7 +18,8 @@ function tile2lat(y,z) {
 
 function asyncHeightImage(z,x,y)
 {
-    var imageURL = `https://api.mapbox.com/v4/mapbox.terrain-rgb/${z}/${x}/${y}.pngraw?access_token=${apiKey}`;
+    var attribute = useRetinaMap ? "@2x" : "";
+    var imageURL = `https://api.mapbox.com/v4/mapbox.terrain-rgb/${z}/${x}/${y}` + attribute +`.png?access_token=${apiKey}`;
     console.log(imageURL);
     return new Promise(function (resolve, reject)
     {
@@ -26,6 +27,21 @@ function asyncHeightImage(z,x,y)
 
         img.setAttribute('crossOrigin', 'anonymous');
 
+        img.onload = function ()
+        {
+            resolve(this);
+        };
+        img.src = imageURL;
+    });
+}
+function asyncColorImage(z,x,y)
+{
+    var attribute = useRetinaMap ? "@2x" : "";
+    var imageURL = `https://api.mapbox.com/v4/mapbox.satellite/${z}/${x}/${y}` + attribute +`.jpg80?access_token=${apiKey}`;
+    return new Promise(function (resolve, reject)
+    {
+        var img = new Image();
+        img.setAttribute('crossOrigin', 'anonymous');
         img.onload = function ()
         {
             resolve(this);
@@ -63,7 +79,8 @@ function imageToHeightData(img)
 }
 function asyncHeightMap(z,x,y)
 {
-    var imageURL = `https://api.mapbox.com/v4/mapbox.terrain-rgb/${z}/${x}/${y}.pngraw?access_token=${apiKey}`;
+    var attribute = useRetinaMap ? "@2x" : "";
+    var imageURL = `https://api.mapbox.com/v4/mapbox.terrain-rgb/${z}/${x}/${y}` + attribute +`.png?access_token=${apiKey}`;
     return new Promise(function (resolve, reject)
     {
         var img = new Image();
@@ -102,8 +119,9 @@ function asyncHeightMap(z,x,y)
 }
 function asyncColorMap(z,x,y)
 {
-    var imageURL = `https://api.mapbox.com/v4/mapbox.satellite/${z}/${x}/${y}.jpg80?access_token=${apiKey}`;
-    // var imageURL = `https://api.mapbox.com/v4/mapbox.satellite/${z}/${x}/${y}@2x.jpg80?access_token=${apiKey}`;
+
+    var attribute = useRetinaMap ? "@2x" : "";
+    var imageURL = `https://api.mapbox.com/v4/mapbox.satellite/${z}/${x}/${y}` + attribute +`.jpg80?access_token=${apiKey}`;
     return new Promise(function (resolve, reject)
     {
         var img = new Image();
